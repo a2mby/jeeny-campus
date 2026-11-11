@@ -1,0 +1,1262 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Jeeny Campus — الشرح الكامل للمشروع</title>
+<style>
+:root{
+  --bg:#0b1220;--bg2:#111a2e;--card:#16213a;--line:#25335a;--text:#e8edf7;--mute:#9fb0d0;
+  --teal:#2dd4bf;--blue:#60a5fa;--amber:#fbbf24;--red:#f87171;--green:#4ade80;--violet:#a78bfa;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:"Geeza Pro","Segoe UI",Tahoma,"Noto Naskh Arabic",sans-serif;background:var(--bg);color:var(--text);line-height:1.9;font-size:17px}
+a{color:inherit}
+.layout{display:flex;min-height:100vh}
+nav{position:fixed;top:0;right:0;width:250px;height:100vh;background:var(--bg2);border-left:1px solid var(--line);padding:20px 14px;overflow-y:auto;z-index:20}
+nav .logo{font-weight:800;font-size:20px;color:var(--teal);margin-bottom:14px;padding:0 8px}
+nav a{display:block;text-decoration:none;color:var(--mute);padding:6px 10px;border-radius:8px;font-size:14.5px;line-height:1.5;margin-bottom:2px}
+nav a:hover,nav a.active{background:var(--card);color:var(--teal)}
+main{margin-right:250px;width:calc(100% - 250px);max-width:1100px;padding:0 36px 80px}
+section{padding:56px 0 8px;scroll-margin-top:10px}
+h1{font-size:44px;line-height:1.4}
+h2{font-size:30px;margin-bottom:6px}
+h2 .n{display:inline-grid;place-items:center;width:42px;height:42px;border-radius:12px;background:var(--teal);color:#06231f;font-size:20px;margin-left:10px;vertical-align:middle}
+h3{font-size:19px;margin:18px 0 8px}
+.lead{color:var(--mute);margin-bottom:22px;font-size:17px}
+.hero{padding:70px 0 30px;border-bottom:1px solid var(--line)}
+.hero .tag{color:var(--teal);font-weight:700;letter-spacing:.5px}
+.hero p{font-size:19px;color:var(--mute);max-width:820px;margin-top:14px}
+.quote{border-right:4px solid var(--teal);background:var(--card);padding:16px 20px;border-radius:12px;margin:22px 0;font-size:18px}
+.grid{display:grid;gap:14px}
+.g2{grid-template-columns:repeat(2,1fr)}.g3{grid-template-columns:repeat(3,1fr)}.g5{grid-template-columns:repeat(5,1fr)}
+@media(max-width:1000px){nav{display:none}main{margin:0;width:100%;padding:0 18px 60px}.g2,.g3,.g5{grid-template-columns:1fr}h1{font-size:32px}}
+.card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:18px}
+.card h4{font-size:17px;margin-bottom:4px;color:var(--teal)}
+.card p,.card li{color:var(--mute);font-size:15.5px;line-height:1.8}
+.card .eg{margin-top:8px;font-size:14px;color:var(--amber)}
+.big{font-size:32px;font-weight:800;color:var(--teal)}
+.alert{background:#3a2a0b;border:1px solid #92650f;color:#fde7b0;border-radius:14px;padding:18px 22px}
+.alert b{color:var(--amber)}
+.pill{display:inline-block;padding:1px 10px;border-radius:99px;font-size:13px;font-weight:700}
+.P0{background:#5c1d1d;color:#fecaca}.P1{background:#5c4413;color:#fde68a}.P2{background:#173a5c;color:#bfdbfe}
+table{width:100%;border-collapse:collapse;background:var(--card);border-radius:14px;overflow:hidden;font-size:15px}
+th,td{padding:10px 14px;text-align:right;border-bottom:1px solid var(--line);vertical-align:top}
+th{background:#1b2a4d;color:var(--teal);font-weight:700}
+tr:last-child td{border-bottom:0}
+.tabs{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:14px}
+.tab{background:var(--card);border:1px solid var(--line);color:var(--mute);padding:8px 14px;border-radius:99px;cursor:pointer;font:inherit;font-size:14.5px}
+.tab.on{background:var(--teal);color:#06231f;border-color:var(--teal);font-weight:700}
+.panel{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:22px}
+.panel h4{color:var(--teal);font-size:20px;margin-bottom:6px}
+.kv{display:grid;grid-template-columns:110px 1fr;gap:6px 12px;margin-top:10px;font-size:15.5px}
+.kv b{color:var(--amber)}
+.warn{color:var(--red);font-weight:700}
+.ok{color:var(--green);font-weight:700}
+svg{max-width:100%;height:auto}
+svg text{font-family:inherit}
+.flow{display:flex;flex-direction:column;gap:0}
+.stage{display:flex;gap:14px;align-items:flex-start;position:relative;padding-bottom:18px}
+.stage:not(:last-child)::before{content:"";position:absolute;right:21px;top:44px;bottom:0;width:2px;background:var(--line)}
+.stage .dot{flex:none;width:44px;height:44px;border-radius:50%;background:var(--blue);color:#05172e;font-weight:800;display:grid;place-items:center;z-index:1}
+.stage .body{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:12px 16px;flex:1}
+.stage h4{color:var(--blue)}
+.formula{direction:ltr;text-align:center;font-family:ui-monospace,Menlo,monospace;background:#0a1020;border:1px dashed var(--line);border-radius:10px;padding:10px;margin:10px 0;color:var(--amber);font-size:15px;overflow-x:auto}
+.sl{display:flex;align-items:center;gap:12px;margin:10px 0}
+.sl label{min-width:150px;color:var(--mute);font-size:15px}
+.sl output{min-width:70px;color:var(--teal);font-weight:700;direction:ltr;text-align:left}
+input[type=range]{flex:1;accent-color:var(--teal)}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin:8px 0}
+.chip{padding:8px 14px;border-radius:12px;border:2px solid var(--line);background:#0e172b;cursor:pointer;user-select:none;font-size:14.5px;line-height:1.6}
+.chip.sel{border-color:var(--teal);background:#0f3a3a}
+.chip small{display:block;color:var(--mute)}
+.result{margin-top:12px;padding:14px;border-radius:12px;background:#0a1020;border:1px solid var(--line)}
+.bar{height:22px;border-radius:6px;display:flex;align-items:center;padding:0 8px;font-size:13px;color:#06101f;font-weight:700;white-space:nowrap}
+.row{display:grid;grid-template-columns:200px 1fr;gap:10px;align-items:center;margin:7px 0;font-size:14.5px}
+details{background:var(--card);border:1px solid var(--line);border-radius:12px;margin-bottom:8px;padding:12px 18px}
+summary{cursor:pointer;font-weight:700;color:var(--text)}
+details p{color:var(--mute);margin-top:8px}
+details[open] summary{color:var(--teal)}
+.inv{counter-reset:i}
+.inv li{list-style:none;counter-increment:i;padding:10px 14px 10px 10px;background:var(--card);border:1px solid var(--line);border-radius:12px;margin-bottom:8px;display:flex;gap:12px;align-items:flex-start}
+.inv li::before{content:counter(i);flex:none;width:28px;height:28px;border-radius:8px;background:var(--violet);color:#1b1040;font-weight:800;display:grid;place-items:center;font-size:14px}
+.tl{display:flex;height:46px;border-radius:12px;overflow:hidden;margin:12px 0;direction:rtl}
+.tl div{display:grid;place-items:center;color:#06101f;font-size:13px;font-weight:700;border-left:2px solid var(--bg)}
+.sw{width:12px;height:12px;border-radius:3px;display:inline-block;margin-left:6px}
+.legend{display:flex;gap:16px;flex-wrap:wrap;font-size:14px;color:var(--mute);margin:8px 0}
+footer{margin-top:60px;padding-top:20px;border-top:1px solid var(--line);color:var(--mute);font-size:14px}
+.note{font-size:13.5px;color:var(--mute);margin-top:8px}
+
+/* ---- Notes manager ---- */
+mark.nt{background:#fbbf2440;color:inherit;border-bottom:2px solid var(--amber);border-radius:3px;cursor:pointer;padding:0 1px}
+mark.nt.done{background:#4ade8030;border-color:var(--green)}
+mark.nt.flash{outline:3px solid var(--teal)}
+#ntAdd{position:absolute;z-index:60;background:var(--teal);color:#06231f;border:0;border-radius:99px;padding:6px 14px;font:inherit;font-size:14px;font-weight:700;cursor:pointer;box-shadow:0 6px 20px #0008;display:none}
+#ntPop{position:fixed;z-index:70;width:340px;max-width:92vw;background:var(--card);border:1px solid var(--teal);border-radius:14px;padding:14px;box-shadow:0 10px 40px #000a;display:none}
+#ntPop q{display:block;color:var(--amber);font-size:14px;margin-bottom:8px;max-height:70px;overflow:auto}
+#ntPop textarea,#ntPanel textarea{width:100%;min-height:90px;background:#0a1020;color:var(--text);border:1px solid var(--line);border-radius:10px;padding:8px;font:inherit;font-size:15px;resize:vertical}
+.nb{background:var(--teal);color:#06231f;border:0;border-radius:8px;padding:6px 14px;font:inherit;font-size:14px;font-weight:700;cursor:pointer}
+.nb.g{background:#25335a;color:var(--text)}.nb.r{background:#5c1d1d;color:#fecaca}
+#ntFab{position:fixed;left:18px;bottom:18px;z-index:55;background:var(--amber);color:#2a1b00;border:0;border-radius:99px;padding:10px 18px;font:inherit;font-weight:800;cursor:pointer;box-shadow:0 6px 20px #0009}
+#ntFab span{background:#2a1b00;color:var(--amber);border-radius:99px;padding:0 8px;margin-right:6px}
+#ntPanel{position:fixed;left:0;top:0;height:100vh;width:380px;max-width:100vw;background:var(--bg2);border-right:1px solid var(--line);z-index:65;transform:translateX(-102%);transition:transform .25s;display:flex;flex-direction:column}
+#ntPanel.open{transform:none}
+#ntPanel header{padding:14px 16px;border-bottom:1px solid var(--line);display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+#ntPanel header b{font-size:18px;color:var(--amber);flex:1}
+#ntList{overflow:auto;padding:12px;flex:1}
+.ni{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:10px 12px;margin-bottom:10px;border-right:4px solid var(--amber)}
+.ni.done{border-right-color:var(--green);opacity:.7}
+.ni .q{color:var(--amber);font-size:13.5px;cursor:pointer}
+.ni .s{color:var(--mute);font-size:12.5px}
+.ni p{white-space:pre-wrap;font-size:15px;margin:4px 0}
+.ni .a{display:flex;gap:6px;flex-wrap:wrap;margin-top:6px}
+
+</style>
+</head>
+<body>
+<div class="layout">
+<nav id="nav"><div class="logo">🚖 Jeeny Campus</div></nav>
+<main>
+
+<header class="hero" id="top" data-nav="الرئيسية">
+  <div class="tag">هاكاثون جيني · المواصلات والذكاء الاصطناعي · 27–28 نوفمبر 2026</div>
+  <h1>Jeeny Campus<br>نظام تنقّل جامعي ذكي</h1>
+  <p>نظام يخطط تلقائياً لرحلات الطلاب المتكررة، ويكوّن مجموعات ركوب متوافقة، ويحسّن المسار والسعر، ويتكيّف عندما تتغير الجداول أو الركاب.</p>
+  <div class="quote">الطالب يحدد <b>أين</b> يجب أن يكون، و<b>متى</b>، وميزانيته وتفضيلاته — و<b>جيني تتولى التخطيط</b>.</div>
+  <h3>المشاكل الخمس التي يحلها المشروع معاً</h3>
+  <div class="grid g5" id="five"></div>
+</header>
+
+<section id="reg" data-nav="تنبيه تنظيمي مهم">
+  <h2><span class="n">!</span>اكتشاف يجب التعامل معه أولاً</h2>
+  <div class="alert">
+    <b>قيد تنظيمي محتمل:</b> تقرير لوكالة بترا بتاريخ 5 نوفمبر 2026 عن قواعد جديدة لمكاتب التاكسي الأصفر العاملة عبر تطبيقات النقل يقول إنها <b>تمنع التقاط عدة ركاب منفصلين في رحلة واحدة</b>، وتشمل أيضاً اشتراطات حول اعتماد الأجرة وخصوصية الركاب وترخيص المشغّلين.
+    <br><br>هذا <b>لا يثبت</b> أن كل مركبات جيني أو كل أشكال المشاركة ممنوعة — ينبغي التأكد من جيني أو هيئة تنظيم النقل البري.
+  </div>
+  <div class="grid g3" style="margin-top:14px">
+    <div class="card"><h4>❌ لا تقل</h4><p>إن مشاركة الركاب مسموحة قانونياً لكل مركبات جيني.</p></div>
+    <div class="card"><h4>✅ قل</h4><p>المشاركة الحية خاضعة لفئة المركبة والتصريح التنظيمي المعمول به.</p></div>
+    <div class="card"><h4>🛠 ابنِ</h4><p>نموذج مطابقة «واعٍ بالامتثال» يوضح كيف ستعمل المشاركة حيث تكون مسموحة.</p></div>
+  </div>
+  <p class="note">لماذا يهم؟ لأن حكّاماً من شركة نقل قد يهتمون بالجدوى بقدر اهتمامهم بالابتكار التقني. موضوع الهاكاثون (المواصلات والذكاء الاصطناعي) يتطابق مع مسار «تنقّل الطلاب اليومي».</p>
+</section>
+
+<section id="model" data-nav="1. النموذج المنتجي">
+  <h2><span class="n">1</span>النموذج المنتجي: ستة مفاهيم منفصلة</h2>
+  <p class="lead">بدل معاملة كل حجز كرحلة معزولة، نفصل المنتج إلى ستة مفاهيم. هذا الفصل يمنع كثيراً من مشاكل التشغيل والبرمجة.</p>
+  <div class="grid g3" id="concepts"></div>
+  <div class="quote">مثال: أربعة أصدقاء في نفس <b>دائرة الركوب</b> لا يسافرون جميعاً كل ثلاثاء، والانضمام للدائرة <b>لا</b> يحجز مقعداً ولا يخصم مالاً تلقائياً.</div>
+  <h3>تسلسل المفاهيم</h3>
+  <div id="chainSvg"></div>
+</section>
+
+<section id="ai" data-nav="2. الخوارزميات والذكاء">
+  <h2><span class="n">2</span>أين نستخدم الخوارزميات وأين نستخدم الذكاء الاصطناعي</h2>
+  <p class="lead"><b>القرار المحدَّث: نظام هجين.</b> <u>الخوارزميات تقرر</u> (القيود، السلامة، الموعد، السعر، الموافقات) لأن نتيجتها يجب أن تكون مضمونة. و<u>الذكاء الاصطناعي يتنبأ</u> بما لا يمكن حسابه بصيغة: الطلب القادم، واحتمال الإلغاء، وزمن الرحلة وعدم اليقين فيه. مخرجاته تغذّي الترتيب والتجهيز <b>ولا تتجاوز أي قيد صارم</b>؛ وإن تعطل النموذج يعود النظام إلى قيم افتراضية آمنة. وتحتسب الهاكاثون 20% على دمج ميزات الذكاء الاصطناعي، لذلك أضفنا ثلاثة نماذج حقيقية قابلة للتجربة في القسم التالي.</p>
+  <div class="tabs" id="aiTabs"></div>
+  <div class="panel" id="aiPanel"></div>
+
+  <h3>🔧 جرّب: متى يجب أن أغادر، وهل المشاركة تستحق وقتي؟ (القدرة C)</h3>
+  <div class="panel">
+    <div class="formula">t_pickup = t_deadline − t_journey − t_buffer</div>
+    <div class="sl"><label>موعد المحاضرة (دقيقة بعد 7:00)</label><input id="dl" type="range" min="30" max="180" step="5" value="60"><output id="dlo"></output></div>
+    <div class="sl"><label>زمن الرحلة المتوقع (متوسط)</label><input id="tj" type="range" min="8" max="60" value="22"><output id="tjo"></output></div>
+    <div class="sl"><label>هامش الأمان (P90)</label><input id="tb" type="range" min="0" max="25" value="8"><output id="tbo"></output></div>
+    <div class="result" id="deptRes"></div>
+    <div id="deptSvg"></div>
+    <p class="note">في الإنتاج الهامش يعتمد على عدم اليقين في زمن الرحلة (نسبة مئوية عالية مثل P90 للامتحانات)، وليس رقماً ثابتاً.</p>
+    <h4 style="color:var(--amber);margin-top:18px">مقايضة التوفير بالوقت</h4>
+    <div class="sl"><label>قيمة وقتك (دينار/ساعة)</label><input id="vt" type="range" min="0" max="6" step="0.5" value="1.5"><output id="vto"></output></div>
+    <div class="sl"><label>دقائق إضافية (تبكير/انتظار/مشي)</label><input id="xm" type="range" min="0" max="45" value="12"><output id="xmo"></output></div>
+    <div class="sl"><label>التوفير المالي من المشاركة</label><input id="sv" type="range" min="0" max="6" step="0.25" value="2"><output id="svo"></output></div>
+    <div class="result" id="tmRes"></div>
+    <p class="note">قيمة الوقت يحددها الطالب في إعداداته (رقم افتراضي للتوضيح). الصافي = التوفير − (الدقائق ÷ 60 × قيمة الوقت).</p>
+  </div>
+</section>
+
+<section id="ailab" data-nav="2ب. مختبر الذكاء الاصطناعي">
+  <h2><span class="n">2ب</span>مختبر الذكاء الاصطناعي: ثلاثة نماذج تعمل فعلاً</h2>
+  <p class="lead">هذه نماذج تعلّم آلي حقيقية <b>تُدرَّب الآن في متصفحك</b> أمام عينيك، ثم تُقيَّم على بيانات لم ترها. <b class="warn">البيانات اصطناعية</b> (مولَّدة بنمط معروف لأننا لا نملك بيانات جيني). الهدف إثبات الفكرة والتقييم؛ وفي الإنتاج يُعاد التدريب على بيانات رحلات حقيقية بموافقة الطلاب.</p>
+
+  <h3>أين يقع الذكاء الاصطناعي في النظام؟</h3>
+  <div class="grid g5">
+    <div class="card"><h4>1 · المدخلات</h4><p>الجداول، الطلبات، الخرائط، التقويم</p></div>
+    <div class="card" style="border-color:var(--violet)"><h4 style="color:var(--violet)">2 · نماذج AI (تتنبأ)</h4><p>طلب · إلغاء · زمن الرحلة</p></div>
+    <div class="card" style="border-color:var(--amber)"><h4 style="color:var(--amber)">3 · محرك المطابقة (يقرر)</h4><p>يستخدم التنبؤات في الترتيب والتجهيز</p></div>
+    <div class="card" style="border-color:var(--red)"><h4 style="color:var(--red)">4 · قيود صارمة (حق النقض)</h4><p>موعد، سعة، سعر، قانون، موافقة</p></div>
+    <div class="card"><h4>5 · العرض للطالب</h4><p>مع سبب التوصية ودرجة الموثوقية</p></div>
+  </div>
+  <div class="quote"><b>قاعدة الدمج:</b> الذكاء الاصطناعي يؤثر في <u>ترتيب</u> الخيارات و<u>تجهيز</u> الموارد، ولا يملك صلاحية <u>الموافقة</u> على شيء. إن تعطل أي نموذج: نستخدم قيماً افتراضية محافظة (هامش أمان أكبر، بلا توقع طلب، بلا قائمة انتظار تلقائية).</div>
+
+  <h3>النموذج 1 · توقع الطلب (Demand Forecast)</h3>
+  <div class="panel">
+    <p class="lead" style="margin-bottom:8px"><b>السؤال:</b> كم طلباً سيأتي من منطقة معيّنة صباح كل يوم الأسبوع القادم؟ <b>القرار الذي يغذّيه:</b> متى نبدأ توليد العروض وأين نقترح نقاط التقاء مشتركة (ويدعم ميزة محطات الباص).<br><b>النوع:</b> انحدار خطي (ridge) على اليوم، وأسبوع الامتحانات، والاتجاه.</p>
+    <label style="cursor:pointer"><input type="checkbox" id="l1ex"> الأسبوع القادم أسبوع امتحانات</label>
+    <div id="l1Svg"></div>
+    <div class="result" id="lab1Eval"></div>
+  </div>
+
+  <h3>النموذج 2 · مخاطر الإلغاء (Cancellation Risk)</h3>
+  <div class="panel">
+    <p class="lead" style="margin-bottom:8px"><b>السؤال:</b> ما احتمال أن يلغي هذا الراكب؟ <b>القرار الذي يغذّيه:</b> هل نرسل تذكيراً ونجهّز قائمة انتظار قبل أن يلغي. هذا يحل مشكلة «ماذا لو ألغى راكب بعد الالتزام» بأن نملأ المقعد مبكراً.<br><b>النوع:</b> انحدار لوجستي (logistic regression).</p>
+    <div class="chips" style="margin:6px 0"><label class="chip" style="cursor:pointer"><input type="checkbox" id="l2t"> الرحلة يوم الخميس</label><label class="chip" style="cursor:pointer"><input type="checkbox" id="l2e"> أسبوع امتحانات</label></div>
+    <div class="sl"><label>نسبة إلغائه في الماضي</label><input id="l2r" type="range" min="0" max="50" value="10"><output id="l2ro"></output></div>
+    <div class="sl"><label>كم قبل الرحلة حجز؟</label><input id="l2l" type="range" min="1" max="72" value="24"><output id="l2lo"></output></div>
+    <div class="result" id="l2Res"></div>
+    <div class="result" id="lab2Eval"></div>
+    <p class="note">التنبؤ يُستخدم لتجهيز بدائل فقط؛ لا يُعاقَب الطالب ولا يُرفض طلبه بسببه (عدالة).</p>
+  </div>
+
+  <h3>النموذج 3 · زمن الرحلة وعدم اليقين P90</h3>
+  <div class="panel">
+    <p class="lead" style="margin-bottom:8px"><b>السؤال:</b> كم ستستغرق الرحلة، وما أسوأ زمن معقول؟ <b>القرار الذي يغذّيه:</b> هامش الأمان ودرجة موثوقية الوصول لكل عرض، وبالتالي الحد الأدنى الإلزامي للموثوقية.<br><b>النوع:</b> نموذجان: انحدار لزمن الرحلة (log) + نموذج لعدم اليقين، فنحصل على نطاق وليس رقماً واحداً.</p>
+    <div class="sl"><label>المسافة</label><input id="l3d" type="range" min="3" max="20" value="9"><output id="l3do"></output></div>
+    <div class="sl"><label>الوقت المتاح حتى الموعد</label><input id="l3a" type="range" min="10" max="90" value="55"><output id="l3ao"></output></div>
+    <div class="chips" style="margin:6px 0"><label class="chip" style="cursor:pointer"><input type="checkbox" id="l3p" checked> ساعة الذروة</label><label class="chip" style="cursor:pointer"><input type="checkbox" id="l3r"> مطر</label></div>
+    <div class="result" id="l3Res"></div>
+    <div class="result" id="lab3Eval"></div>
+  </div>
+
+  <h3>ضمانات الاستخدام المسؤول</h3>
+  <div class="grid g2">
+    <div class="card"><h4>1. التنبؤ ليس قراراً</h4><p>لا يُحجز ولا يُخصم ولا يُرفض أحد بناءً على نموذج وحده.</p></div>
+    <div class="card"><h4>2. حق النقض للقيود</h4><p>الموعد والسعة والسعر والقانون تُفحص بعد النموذج وتتغلب عليه دائماً.</p></div>
+    <div class="card"><h4>3. بديل عند التعطل</h4><p>نموذج معطل أو خارج المدى ← قيم افتراضية محافظة، ويُسجَّل الحدث.</p></div>
+    <div class="card"><h4>4. المعايرة والمراقبة</h4><p>نقارن التوقع بالنتيجة الفعلية (مثلاً: هل وصل 90% ضمن P90؟) ونعيد التدريب عند الانحراف.</p></div>
+  </div>
+</section>
+
+<section id="match" data-nav="3. خوارزمية المطابقة">
+  <h2><span class="n">3</span>خوارزمية المطابقة التي سنبنيها</h2>
+  <p class="lead">محرك مطابقة مقيَّد بأفق متحرك (rolling-horizon): يقيّم باستمرار الطلبات المستقبلية، ويولّد المجموعات المرشحة ويرتبها ويحدّث غير المؤكد منها عند وصول معلومات جديدة.</p>
+  <div class="flow" id="stages"></div>
+
+  <h3>القيود الصارمة (غير قابلة للتفاوض)</h3>
+  <div class="formula">Arrival_i ≤ Deadline_i · WalkTime_i ≤ MaxWalk_i · Detour_i ≤ MaxDetour_i<br>Fare_i ≤ AcceptedBudget_i · Occupancy(t) ≤ SeatsAvailable(t)</div>
+  <h3>دالة التكلفة للترتيب (بعد الجدوى فقط)</h3>
+  <div class="formula">J = w₁·C + w₂·W + w₃·D + w₄·E + w₅·U</div>
+  <div class="grid g5">
+    <div class="card"><h4>C</h4><p>تكلفة الركاب المعيارية</p></div>
+    <div class="card"><h4>W</h4><p>الانتظار والمشي</p></div>
+    <div class="card"><h4>D</h4><p>الانحراف الكلي</p></div>
+    <div class="card"><h4>E</h4><p>كيلومترات مركبة إضافية</p></div>
+    <div class="card"><h4>U</h4><p>عدم اليقين في الوصول</p></div>
+  </div>
+
+  <h3>🔧 جرّب: هل هذه المجموعة ممكنة؟ (القدرة B)</h3>
+  <div class="panel">
+    <p class="lead" style="margin-bottom:6px">اختر طلاباً لتشكيل مجموعة. زمن الرحلة للجامعة يعتمد على الحي. المحرك يرفض أي مجموعة تخالف قيداً.</p>
+    <div class="chips" id="stuChips"></div>
+    <div class="result" id="grpRes"></div>
+    <p class="note">الخوارزمية ترتّب الخيارات الممكنة، ولا يخترع الإمكانية. الطالب D في المثال لا يُضاف لملء المقعد الرابع.</p>
+  </div>
+
+  <h3>🔧 المطابقة الفورية: ماذا يفعل النظام؟ (القدرة D)</h3>
+  <table id="matchTime"></table>
+</section>
+
+<section id="price" data-nav="4. التسعير">
+  <h2><span class="n">4</span>التسعير: اقتصاديات تعمل فعلاً</h2>
+  <p class="lead">أسهل طريقة لفقدان المصداقية هي وعد الطلاب بخصومات كبيرة بلا توضيح من يدفعها. يجب إرضاء ثلاثة أطراف:</p>
+  <div class="grid g3">
+    <div class="card"><h4>👨‍🎓 الطالب</h4><p>يدفع أقل مقابل رحلة مقبولة</p></div>
+    <div class="card"><h4>🚗 السائق</h4><p>يتقاضى تعويضاً كافياً</p></div>
+    <div class="card"><h4>🏢 جيني</h4><p>خدمة مستدامة اقتصادياً</p></div>
+  </div>
+  <h3>🔧 جرّب: محاكي توفير المجموعة (أرقام افتراضية)</h3>
+  <div class="panel">
+    <div class="sl"><label>سعر الرحلة الفردية (دينار)</label><input id="pf" type="range" min="2" max="10" step="0.5" value="5"><output id="pfo"></output></div>
+    <div class="sl"><label>عدد الطلاب</label><input id="pn" type="range" min="2" max="4" value="3"><output id="pno"></output></div>
+    <div class="sl"><label>سعر الرحلة المشتركة الكلي</label><input id="ps" type="range" min="3" max="20" step="0.5" value="9"><output id="pso"></output></div>
+    <div class="sl"><label>أجر السائق + التكاليف + الهامش</label><input id="pc" type="range" min="2" max="20" step="0.5" value="8"><output id="pco"></output></div>
+    <div class="sl"><label>هامش عدم اليقين في النطاق</label><input id="pu" type="range" min="0" max="30" value="10"><output id="puo"></output></div>
+    <div id="priceSvg"></div>
+    <div class="result" id="priceRes"></div>
+    <div class="formula">Pool revenue ≥ Driver payout + Platform variable costs + Required margin</div>
+    <p class="note">أرقام افتراضية وليست تسعير جيني الفعلي. ثلاث رحلات منفصلة تنتج إيراداً إجمالياً أكبر، وقد تستهلك ساعات وكيلومترات أكثر — فالتوفير للطالب لا يثبت ربحية المنصة.</p>
+  </div>
+  <h3>قواعد التسعير الموصى بها</h3>
+  <table>
+    <tr><th>الحالة</th><th>السياسة</th></tr>
+    <tr><td>المجموعة لا تزال تتكوّن</td><td>عرض السعر كـ<b>نطاق (من – إلى)</b> مع توضيح أنه تقديري</td></tr>
+    <tr><td>الطالب يقبل عرضاً مسعّراً</td><td>تجميد <b>الحد الأعلى للنطاق</b> كسقف مقبول طوال صلاحية العرض؛ قد يدفع الطالب أقل لكن ليس أكثر</td></tr>
+    <tr><td>طالب آخر ينضم</td><td>خفض الأجرة فقط إذا كان التوفير المعاد حسابه صالحاً ومسموحاً</td></tr>
+    <tr><td>إلغاء راكب قبل الالتزام</td><td>إعادة حساب العروض غير الملتزم بها</td></tr>
+    <tr><td>إلغاء راكب بعد الالتزام</td><td>احترام شروط الباقين بالترتيب: (1) ملء المقعد الشاغر بمطابقة جديدة، (2) امتصاص الفرق، (3) موافقة جديدة أو إلغاء بلا غرامة — التفصيل في قسم 16</td></tr>
+    <tr><td>الرحلة المشتركة غير مجدية اقتصادياً</td><td>عدم «تصنيع» توفير؛ <b>متابعة البحث عن عرض آخر</b> حتى وقت الإغلاق (أبطأ لكنه قد يكون أفضل)، مع بقاء الرحلة الفردية الفورية خياراً للطالب</td></tr>
+    <tr><td>تطبيق كوبون</td><td>الخصم بعد الأجرة الأساسية والأهلية، دون خرق قيود أجر السائق</td></tr>
+    <tr><td>فروق التقريب</td><td>قاعدة تقريب حتمية وقابلة للتدقيق</td></tr>
+  </table>
+  <div class="quote">لا تجعل الركاب المتبقين يدفعون أكثر تلقائياً لأن أحداً ألغى — هذا يقتل الثقة بالرحلات المشتركة المتكررة.</div>
+</section>
+
+<section id="life" data-nav="5. دورة حياة الحجز">
+  <h2><span class="n">5</span>دورة حياة الحجز — العمود الفقري التشغيلي</h2>
+  <p class="lead">القرار المعماري الأهم: <b>الانضمام إلى مجموعة ≠ امتلاك رحلة</b>. التزام المجموعة وتأكيد السائق مرحلتان منفصلتان، والواجهة يجب أن تفصح هل الإرسال مضمون أم معلّق أم مجرد مطلوب.</p>
+  <div id="lifeSvg"></div>
+  <h3>ثوابت النظام العشرة (قواعد تُختبر بالسيناريوهات)</h3>
+  <ul class="inv">
+    <li>للراكب حجز ملتزم نشط واحد على الأكثر لنفس الرحلة.</li>
+    <li>المركبة لا تتجاوز سعتها المتاحة في أي نقطة من المسار.</li>
+    <li>لا يُخصم من الراكب أكثر من سقف الأجرة المقبول دون موافقة جديدة صريحة.</li>
+    <li>العروض المنتهية لا يمكن قبولها حتى لو بقيت على شاشة قديمة.</li>
+    <li>كل عضو مؤكد وافق صراحةً على الشروط الجوهرية الحالية للرحلة.</li>
+    <li>تغيير الجدول لا يلغي صامتاً حجزاً مؤكداً.</li>
+    <li>كل دفعة واسترداد تُسجَّل مرة واحدة فقط وتكون قابلة للتدقيق.</li>
+    <li>إعادة التحسين لا تخرق قيود الوصول أو الخصوصية أو الانحراف الملتزم بها.</li>
+    <li>أهلية السائق وقانونية الرحلة تُفحص قبل الإرسال.</li>
+    <li>تعطّل أي وحدة تنبؤ أو إحصاء لا يتجاوز أي قاعدة من هذه القواعد.</li>
+  </ul>
+</section>
+
+<section id="edge" data-nav="6. الحالات الحدّية">
+  <h2><span class="n">6</span>الحالات الحدّية — اختبار الضغط الجاد</h2>
+  <p class="lead"><span class="pill P0">P0</span> سلامة أو صحة مالية أو قانونية أو فقدان ثقة كبير &nbsp; <span class="pill P1">P1</span> فشل مهم في الرحلة &nbsp; <span class="pill P2">P2</span> تدهور في سهولة الاستخدام أو التحسين</p>
+  <div class="grid g2">
+    <div class="card"><h4>عدد الحالات حسب الفئة</h4><div id="edgeBar"></div></div>
+    <div class="card"><h4>توزيع الأولويات</h4><div id="edgeDonut" style="text-align:center"></div></div>
+  </div>
+  <h3 style="margin-top:22px">استعرض الحالات</h3>
+  <div class="tabs" id="edgeTabs"></div>
+  <div class="tabs" id="prioTabs"></div>
+  <table id="edgeTable"></table>
+  <div class="quote">قاعدة جوهرية: التكرار يولّد <b>نوايا رحلات</b>، لا مشتريات غير مشروطة. هذه المصفوفة هي أساس حزمة الاختبارات.</div>
+</section>
+
+<section id="five2" data-nav="7. خمس مشاكل أعمق">
+  <h2><span class="n">7</span>خمس مشاكل منتجية أعمق</h2>
+  <p class="lead">الحالات الحدّية تصف ما قد يفشل. هذه المشاكل تحدد هل ينجح المنتج حتى لو عمل البرنامج بشكل مثالي.</p>
+  <div class="grid g2" id="deep"></div>
+  <h3>🔧 جرّب: الأرخص أم الأوثق؟ (المشكلة 2)</h3>
+  <div class="panel" id="rel"></div>
+  <h3>مستويات الاستقلالية (المشكلة 4)</h3>
+  <div class="grid g3">
+    <div class="card"><h4>1 · Suggest — اقترح</h4><p>يجد المجموعات تلقائياً ويقبل الطالب كل حجز.</p><div class="eg">✔ في الهاكاثون</div></div>
+    <div class="card"><h4>2 · Auto-prepare — حضّر</h4><p>يولّد العروض المفضلة ويطلب التأكيد في وقت محدد.</p><div class="eg">✔ في الهاكاثون</div></div>
+    <div class="card"><h4>3 · Auto-book — احجز</h4><p>يحجز فقط ضمن تفويض صريح وقيود صارمة وحدود دفع معتمدة.</p><div class="eg">⏳ ميزة مستقبلية</div></div>
+  </div>
+  <p class="note">وزر «إيقاف هذا الأسبوع» بنقرة واحدة منفصل عن حذف الجدول المتكرر.</p>
+</section>
+
+<section id="arch" data-nav="8. البنية التقنية">
+  <h2><span class="n">8</span>البنية التقنية</h2>
+  <p class="lead">نفضّل <b>Modular Monolith</b> مع وحدات مطابقة وذكاء اصطناعي معزولة، بدل خدمات مصغّرة سابقة لأوانها — حدود هندسية واضحة دون تعقيد نشر في هاكاثون من يومين.</p>
+  <div id="archSvg"></div>
+  <h3>الحزمة التقنية</h3>
+  <table>
+    <tr><th>الطبقة</th><th>التقنية</th><th>السبب</th></tr>
+    <tr><td>الواجهة</td><td>React / Next.js</td><td>نموذج تفاعلي سريع للجوال</td></tr>
+    <tr><td>API</td><td>Laravel</td><td>تنسيق النطاق والتحقق والطوابير وسير عمل قاعدة البيانات</td></tr>
+    <tr><td>قاعدة البيانات</td><td>PostgreSQL</td><td>صحة معاملات الحجز والالتزام</td></tr>
+    <tr><td>جغرافي</td><td>PostGIS (عند الحاجة)</td><td>بحث مكاني عن المرشحين</td></tr>
+    <tr><td>المهام</td><td>طوابير على Redis</td><td>توليد الجداول المتكررة والمطابقة الخلفية</td></tr>
+    <tr><td>التعلّم الآلي</td><td>Python (scikit-learn) كخدمة صغيرة أو نماذج مصدَّرة</td><td>توقع الطلب، مخاطر الإلغاء، زمن الرحلة؛ بدون LLM</td></tr>
+    <tr><td>حساب المسار</td><td>مزوّد مسارات أو شبكة طرق محاكاة</td><td>تقديرات زمن/مسافة واقعية</td></tr>
+    <tr><td>الزمن الحقيقي</td><td>SSE أو WebSockets</td><td>عروض المجموعات وتحديث حالة الحجز</td></tr>
+  </table>
+  <h3>نموذج البيانات الأدنى</h3>
+  <div class="grid g3" id="dm"></div>
+  <p class="note">لا تدمج group_offers وconfirmed_bookings وride_circles في جدول «groups» واحد — هويّاتها وأعمارها وقواعد التزامنها مختلفة جوهرياً.</p>
+  <h3>نمطان تنفيذيان حرجان</h3>
+  <div class="grid g2">
+    <div class="card"><h4>1) قبول الحجز بمعاملة واحدة</h4>
+      <ul style="padding-right:20px">
+        <li>التحقق من نسخة العرض والصلاحية والهوية والأهلية</li>
+        <li>فحص السعة الحالية والحجوزات المتعارضة</li>
+        <li>قفل الصفوف أو تحكم متفائل صحيح</li>
+        <li>إنشاء حجز المقعد/الالتزام ذرّياً</li>
+        <li>نشر الإشعار <b>بعد</b> نجاح الالتزام</li>
+      </ul></div>
+    <div class="card"><h4>2) توصيات قابلة للتفسير ومُنسَّخة</h4>
+      <div class="formula" style="text-align:left;font-size:13px">{ "offerId":"offer-42", "version":3,<br>"status":"PROPOSED", "fareJod":2.4,<br>"expiresAt":"2026-11-17T07:00+03:00",<br>"reasons":["Compatible arrival windows",<br>"Shared pickup point available",<br>"Fare within accepted budget"] }</div>
+      <p>الأسباب مشتقة من بيانات التحسين الفعلية وليست من اختلاق LLM لاحق.</p></div>
+  </div>
+</section>
+
+<section id="metrics" data-nav="9. القياس والإثبات">
+  <h2><span class="n">9</span>ماذا نقيس لإثبات أن المنتج أفضل</h2>
+  <p class="lead">الواجهة الجميلة لا تكفي. نقارن ثلاث مقاربات على نفس الطلاب الاصطناعيين والمسارات وعرض السائقين:</p>
+  <div class="grid g3">
+    <div class="card"><h4>A · خط الأساس 1</h4><p>كل طالب يحجز بشكل مستقل.</p></div>
+    <div class="card"><h4>B · خط الأساس 2</h4><p>تجميع بسيط حسب القرب وأوقات المغادرة فقط.</p></div>
+    <div class="card" style="border-color:var(--teal)"><h4>C · Jeeny Campus</h4><p>تجميع مبني على المسار مع مواعيد الوصول وتحسين نقاط الالتقاء والطلبات المتكررة وبحث محدود.</p></div>
+  </div>
+  <div class="grid g2" style="margin-top:14px" id="metrics"></div>
+  <div class="quote"><b>معيار التقييم الأساسي:</b> رحلات طلابية <u>مكتملة وفي الوقت</u> بتكلفة مقبولة، مع اقتصاديات السائق والامتثال التنظيمي كشروط جدوى صارمة. هذا يمنع «غش» النجاح بعروض رخيصة لا تُنفَّذ.</div>
+  <div class="alert"><b>العرض الحي الأقوى:</b> محاكاة حتمية بـ60 طلب طالب: حجز مستقل ← تجميع ساذج ← محرك مطابقتكم. اعرض النتائج جنباً إلى جنب. <b>لا تعبئ نسب نجاح مخترعة</b> — دع المحاكاة تحسب التوفير والتأخير والمطابقات. ثم ألغِ راكباً عمداً وأعد حساب التخصيصات المتأثرة.</div>
+</section>
+
+<section id="build" data-nav="10. ماذا نبني">
+  <h2><span class="n">10</span>ماذا نبني بالضبط لتعظيم فرص الفوز</h2>
+  <p class="lead">لا تحاول تنفيذ كل شيء. ابنِ بنية منتج شاملة، ثم أظهر عدداً قليلاً من السيناريوهات بإتقان استثنائي. ركّز التعقيد في مكان واحد: <b>محرك المطابقة وقيود الحجز</b>.</p>
+  <div class="grid g2">
+    <div class="card"><h4>توزيع الميزات حسب الأولوية</h4><div id="prioDonut" style="text-align:center"></div></div>
+    <div class="card"><h4>قائمة الميزات</h4><div id="featList" style="max-height:340px;overflow:auto"></div></div>
+  </div>
+  <h3>الشاشات الخمس</h3>
+  <div class="grid g5" id="screens"></div>
+  <p class="note">لا توحي أن سائقاً حقيقياً أُرسل أثناء العرض التجريبي المحاكى.</p>
+</section>
+
+<section id="demo" data-nav="11. سيناريو العرض">
+  <h2><span class="n">11</span>العرض الذي سيقنع الحكّام (4–5 دقائق)</h2>
+  <div class="tl" id="tl"></div>
+  <div class="legend" id="tlLegend"></div>
+  <div id="demoSteps"></div>
+  <div class="quote">الرسالة الرئيسية: Jeeny Campus يؤتمت سير عمل التنقّل بالكامل — بما في ذلك <b>ما يحدث عندما تفشل الخطة المثالية</b>.</div>
+</section>
+
+<section id="qa" data-nav="12. أسئلة الحكام">
+  <h2><span class="n">12</span>أسئلة قد يطرحها الحكّام</h2>
+  <div id="qaList"></div>
+  <p class="note">لا تُخفِ عدم اليقين التنظيمي أو التوريدي أو السعري — الحكّام يقدّرون الفريق الذي حدّد قيود النشر الحقيقية.</p>
+</section>
+
+<section id="team" data-nav="13. الفريق والمراحل">
+  <h2><span class="n">13</span>توزيع الفريق والمراحل</h2>
+  <p class="lead">الهاكاثون يسمح بفرق من 3–5 أعضاء، يوم 27–28 نوفمبر 2026. التسجيل ينتهي 14 نوفمبر 11:59 م.</p>
+  <table>
+    <tr><th>الدور</th><th>المسؤولية الأساسية</th></tr>
+    <tr><td>مسؤول المنتج / مهندس النظام</td><td>قواعد النطاق، سير العمل الكامل، الأولويات، التكامل</td></tr>
+    <tr><td>مهندس المطابقة</td><td>توليد المرشحين، تقييم المسار، التجميع، التسجيل</td></tr>
+    <tr><td>مهندس الخلفية</td><td>التكرار، دورة العرض، المعاملات، المحاكاة</td></tr>
+    <tr><td>مهندس الواجهة / UX</td><td>واجهة الجوال والعرض التفاعلي</td></tr>
+    <tr><td>مهندس ذكاء اصطناعي / بيانات</td><td>النماذج الثلاثة، مولّد البيانات، التقييم والمعايرة</td></tr>
+  </table>
+  <p class="note">بثلاثة أعضاء: ادمج المنتج مع الخلفية، والذكاء الاصطناعي مع المطابقة.</p>
+  <h3>توزيع الجهد المقترح</h3>
+  <div id="mile"></div>
+  <p class="note">توزيع مقترح وليس شرطاً رسمياً. راجع قواعد الحدث قبل بناء أي كود مسبقاً.</p>
+</section>
+
+<section id="dec" data-nav="14. القرارات المقفلة">
+  <h2><span class="n">14</span>القرارات التي تُقفل قبل التنفيذ</h2>
+  <p class="lead">لا تترك هذه القرارات لوكيل ذكاء اصطناعي أو مطوّر ليخترعها — فهي ما يجعل النظام متماسكاً لا مجرد مجموعة ميزات.</p>
+  <table id="decTable"><tr><th>#</th><th>القرار</th><th>الاختيار الموصى به</th></tr></table>
+</section>
+
+<section id="final" data-nav="15. الاستراتيجية النهائية">
+  <h2><span class="n">15</span>الاستراتيجية التنافسية النهائية</h2>
+  <p class="lead">خمسة أشياء يجب أن يتذكرها الحكّام:</p>
+  <div class="grid g5" id="remember"></div>
+  <div class="grid g2" style="margin-top:16px">
+    <div class="card" style="border-color:var(--green)"><h4 style="color:var(--green)">أكبر ميزة</h4><p>استخدام أنماط التنقّل الجامعي المتوقعة لحل مشكلة لا يعالجها الحجز الفوري التقليدي بكفاءة.</p></div>
+    <div class="card" style="border-color:var(--red)"><h4 style="color:var(--red)">أكبر مخاطرة</h4><p>ليست قدرة الخوارزميات على إيجاد مجموعات متوافقة، بل: هل للرحلات المشتركة طلب كافٍ وترخيص وتوفر سائقين وهامش ربح لتُنفَّذ باستمرار؟</p></div>
+  </div>
+  <div class="alert" style="margin-top:16px"><b>إجراء فوري واحد:</b> أكّد قواعد مشاركة الركاب مع منظمي الهاكاثون. التسجيل يُغلق 14 نوفمبر 2026 الساعة 11:59 مساءً، والحدث 27–28 نوفمبر.</div>
+  <p class="note">لا يمكن ضمان الفوز، لكن هذا يعطي تقديماً أقوى بكثير من نموذج مشاركة ركوب تقليدي: منتج متماسك، ونتائج قابلة للقياس، وذكاء اصطناعي ذو معنى، وبنية قابلة للدفاع، وشرح صادق لحدودها.</p>
+</section>
+
+
+<section id="resp" data-nav="16. الرد على ملاحظاتك">
+  <h2><span class="n">16</span>الرد على ملاحظاتك والقرارات المتخذة</h2>
+  <div class="alert"><b>الحكم المحدَّث: كيف ندمج الذكاء الاصطناعي؟</b><br>
+  الدمج <b>مناسب في مكان واحد: التنبؤ</b>. الذكاء الاصطناعي مفيد حيث المطلوب تقدير شيء غير مؤكد (طلب، إلغاء، زمن الرحلة)، وغير مناسب حيث المطلوب ضمان (قيود، سعر، موافقة) أو إدخال بيانات (نموذج اللغة يستهلك tokens ويخطئ بلا ضمان). لذلك: <b>الخوارزميات تقرر، والنماذج تتنبأ</b>، وبعد الهاكاثون تُدرَّب على بيانات حقيقية.<br>
+  <small>هذا تحديث على قراري السابق («ليس الآن») بعد معرفة أن 20% من التقييم على دمج الذكاء الاصطناعي: النماذج الثلاثة تعطي دمجاً حقيقياً دون المخاطرة بالضمانات.</small></div>
+  <h3>أين نقف من كل قدرة</h3>
+  <table>
+    <tr><th>القدرة</th><th>القرار</th><th>الأسلوب</th><th>ملاحظة</th></tr>
+    <tr><td>توقع الطلب</td><td><span class="pill P0">ذكاء اصطناعي</span></td><td>انحدار على الجداول المعلنة</td><td>بيانات اصطناعية الآن، حقيقية بعد الإطلاق</td></tr>
+    <tr><td>مخاطر الإلغاء</td><td><span class="pill P0">ذكاء اصطناعي</span></td><td>انحدار لوجستي</td><td>يجهّز البدائل فقط، لا يعاقب</td></tr>
+    <tr><td>زمن الرحلة وP90</td><td><span class="pill P0">ذكاء اصطناعي</span></td><td>انحدار + نموذج عدم يقين</td><td>يغذّي درجة الموثوقية</td></tr>
+    <tr><td>توافق المجموعات</td><td><span class="pill P2">خوارزمية</span></td><td>قيود + تحسين</td><td>غالباً لا حاجة</td></tr>
+    <tr><td>وقت المغادرة</td><td><span class="pill P2">خوارزمية</span></td><td>صيغة تستخدم P90 من النموذج 3</td><td>الصيغة تقرر والنموذج يغذّيها</td></tr>
+    <tr><td>وقت المطابقة</td><td><span class="pill P2">قواعد</span></td><td>قواعد تكيفية + إغلاق مبكر</td><td>تستخدم توقع الطلب</td></tr>
+    <tr><td>كشف سوء الاستخدام</td><td><span class="pill P2">قواعد</span></td><td>عتبات وشذوذ بسيط</td><td>عند توفر حالات مصنّفة</td></tr>
+    <tr><td>إدخال الجدول</td><td><span class="pill P0">بلا LLM</span></td><td>نموذج منظم مع تحقق</td><td>قرار الملاحظة 5 باقٍ</td></tr>
+  </table>
+  <div class="card" style="margin-top:14px;border-color:var(--amber)"><h4 style="color:var(--amber)">كيف تعرضه أمام الحكّام</h4><p>«ثلاثة نماذج تعلّم آلي تتنبأ، ومحرك قيود يقرر، ودرجة موثوقية لكل عرض مستخرجة من النموذج لا من رقم مخترع.» اعرض أرقام التقييم (الخطأ مقابل الطريقة الساذجة، AUC، معايرة P90) واذكر بصراحة أن البيانات اصطناعية.</p></div>
+
+  <h3>رد على كل ملاحظة</h3>
+  <div id="respList"></div>
+
+  <h3>شرح الملاحظة 8: ماذا يحدث عند إلغاء راكب بعد الالتزام؟</h3>
+  <div class="panel">
+    <p class="lead" style="margin-bottom:6px">مثال افتراضي: رحلة بـ9 د لثلاثة طلاب، كل منهم قبل سقف 3 د. يلغي أحدهم بعد الالتزام.</p>
+    <div class="grid g2">
+      <div class="card" style="border-color:var(--red)"><h4 style="color:var(--red)">❌ ما لا نفعله</h4><p>إعادة تقسيم 9 د على اثنين = 4.5 د لكل منهما. هذا يخرق السقف الذي قبلاه ويقتل الثقة بالرحلات المشتركة.</p></div>
+      <div class="card" style="border-color:var(--green)"><h4 style="color:var(--green)">✔ ما نفعله بالترتيب</h4>
+        <ol style="padding-right:20px;color:var(--mute);font-size:15.5px;line-height:1.9">
+          <li><b>ملء المقعد:</b> نبحث عن راكب جديد متوافق حتى وقت الإغلاق. إن وُجد يبقى السعر 3 د.</li>
+          <li><b>امتصاص الفرق:</b> إن لم يُملأ المقعد والفجوة صغيرة (هنا 3 د إجمالاً) تتحمل المنصة الفرق ضمن حد تحدده جيني.</li>
+          <li><b>موافقة جديدة:</b> إن كانت الفجوة كبيرة نعرض على الباقين سعراً جديداً؛ من يرفض يلغي <u>بلا غرامة</u> ونعرض عليه رحلة فردية أو عرضاً آخر.</li>
+        </ol></div>
+    </div>
+    <p class="note">من يتحمل الفرق (المنصة أم السائق أم صندوق مشترك) قرار تجاري يخص جيني ويحتاج تحققاً، وليس قراراً تقنياً.</p>
+  </div>
+</section>
+
+<footer>تم إعداد هذه الصفحة من وثيقة التصميم الأصلية للمشروع. الأرقام التوضيحية افتراضية وليست تسعير جيني الفعلي.</footer>
+</main>
+</div>
+<script>
+/* بيانات المحتوى — Jeeny Campus */
+const EDGE = {
+  "الجدولة والرحلات المتكررة": [
+    ["الطالب يداوم يومين فقط من ثلاثة","P1","تخطي هذا اليوم مع الحفاظ على القاعدة المتكررة"],
+    ["الجامعة تعلن عطلة","P1","اقتراح إيقاف الرحلات المتأثرة دون إلغاء تلقائي لا رجعة فيه"],
+    ["وقت الامتحان يختلف عن المحاضرة","P1","السماح بتجاوز لمرة واحدة مع هامش وصول أكبر"],
+    ["الطالب يغيّر جدوله بعد قبول مجموعة","P1","يبقى الحجز المؤكد كما هو حتى ينجح إعادة الجدولة"],
+    ["الطالب ينسى إيقاف رحلة متكررة","P1","إعادة تأكيد مسبقة أو سياسة حجز تلقائي مفوَّضة"],
+    ["قاعدتان متكررتان تتداخلان","P1","تنبيه التعارض وعدم إنشاء التزامات مكررة"],
+    ["تغيّر الجدول أثناء الفصل","P2","إصدار نسخة جديدة من الجدول وإعادة توليد الرحلات المستقبلية المؤهلة فقط"],
+    ["الطالب مسافر أسبوعاً","P2","دعم «إيقاف حتى تاريخ»"],
+    ["وجهة العودة مختلفة","P2","معاملة العودة كوجهة منفصلة"],
+    ["الجامعة لها عدة بوابات","P1","اختيار البوابة الصحيحة وزمن المشي المسموح"],
+    ["إدخال وقت بدون AM/PM","P1","طلب تأكيد قبل توليد أي رحلة"]
+  ],
+  "تكوين المجموعات والعضوية": [
+    ["الطالب ينضم لمجموعتين لنفس الرحلة","P0","فرض التزامات متنافية"],
+    ["عدد كافٍ من الركاب بلا سائق","P1","يبقى الإرسال معلّقاً؛ لا ندّعي تأكيد الالتقاء أبداً"],
+    ["عضو دائم في الدائرة غائب","P1","إعادة حساب الأعضاء المتاحين دون حذف الدائرة"],
+    ["غريب يريد دخول دائرة خاصة","P0","يتطلب موافقة المجموعة"],
+    ["رفض عرض لكن يريد أرخص","P2","استئناف المطابقة مع احترام الالتزامات الأخرى"],
+    ["المجموعة وصلت للسعة القصوى","P1","إيقاف توزيع المقاعد وقائمة انتظار مُدارة"],
+    ["فقدان عضو في اللحظة الأخيرة","P1","الحفاظ على الشروط المقبولة أو عرض بدائل عادلة"],
+    ["مغادرة عضو أثناء حساب عروض جديدة","P1","إبطال نسخ العروض القديمة"],
+    ["اختلاف الأعضاء على نقطة الالتقاء","P1","توليد بدائل متوافقة أو تقسيم المجموعة"],
+    ["4 طلاب يطلبون 5 مقاعد","P0","عدّ الركاب والمقاعد الفعلية وليس الحسابات؛ ويمكن لصاحب الحساب إضافة ركاب مرافقين (مثل أخيه) مباشرة من حسابه مع احتساب مقاعدهم"],
+    ["مجموعة ترفض العروض المتوافقة مراراً","P2","احترام التفضيلات وعدم تكرار نفس العرض"]
+  ],
+  "الرحلات الفورية": [
+    ["لا راكب متوافق خلال 15 دقيقة","P1","إيقاف البحث وعرض بديل دون رسوم مفاجئة"],
+    ["ظهور تطابق بعد إلغاء المستخدم","P0","تجاهل التطابق القديم وعدم إحياء الطلب"],
+    ["مجموعتان تتنافسان على طالب واحد","P1","ربط الطالب بواحدة فقط"],
+    ["السائق يصل قبل انتهاء نافذة المطابقة","P1","توضيح هل أُغلقت المطابقة؛ لا توقفات مفاجئة"],
+    ["راكب جديد بعد إرسال السائق","P1","الإدراج فقط قبل منتصف المسار وإن سمحت السياسة والموافقة والسعة والمسار"],
+    ["تزايد الازدحام أثناء المطابقة","P1","إعادة تقييم أوقات الوصول لكل ما لم يُؤكَّد"],
+    ["طلب مشاركة قبل المحاضرة بـ10 دقائق","P1","رفض المشاركة غير الممكنة واقتراح الأسرع"],
+    ["خدمة المطابقة لا تستجيب","P1","مهلة وبديل دون طلبات مكررة"],
+    ["ارتفاع مفاجئ في الطلب","P1","حساب محدود وتحكم بالقبول وتقديرات انتظار صادقة"],
+    ["اختفاء السائقين بعد التجميع","P1","بدء مسار استرداد مسموح وإبلاغ الركاب فوراً"]
+  ],
+  "الالتقاء وتشغيل الرحلة": [
+    ["الطالب متأخر عن الالتقاء","P1","فترة سماح معلنة وتنبيهات وسياسة عدم الحضور"],
+    ["السائق يصل لدبوس مختلف","P1","تصحيح آمن وإعادة حساب"],
+    ["نقطة التقاء على طريق غير متاح","P0","رفض التوقفات غير الآمنة أو غير القانونية"],
+    ["راكب لا يستطيع المشي للنقطة","P1","احترام احتياجات الوصول واقتراح بديل"],
+    ["السائق يلغي قبيل الالتقاء","P1","البحث عن بديل والإبلاغ عن أي موعد متضرر"],
+    ["التُقط الأول وألغى الثاني","P1","المتابعة بأمان وتطبيق السياسة المالية المعتمدة"],
+    ["طالب لا يظهر بعد الالتقاء الأول","P1","سياسة انتظار لا تحتجز الآخرين إلى ما لا نهاية"],
+    ["المركبة لا تعمل في منتصف الرحلة","P0","بروتوكول سلامة واسترداد؛ لا إكمال صامت"],
+    ["السائق يضيف انحرافاً غير معتمد","P0","كشف الانحراف وإبلاغ المعنيين وتوفير الإبلاغ"],
+    ["الطالب يختار بوابة خاطئة","P1","التصحيح إن أمكن مع الإفصاح عن أي تغيّر بالتكلفة/الوقت"]
+  ],
+  "المال والدفع والاسترداد": [
+    ["عدة أشخاص يدفعون لنفس المقعد","P0","التزام واحد فقط لكل مقعد مقبول"],
+    ["فشل دفع أحد الأعضاء","P1","حجز/تحرير وفق سياسة التزام واضحة"],
+    ["الأجرة النهائية أعلى من السقف المقبول","P0","احترام السقف أو طلب قبول جديد قبل الخصم"],
+    ["الإلغاء ينتج حق استرداد","P0","تسجيل الاسترداد كمعاملة منفصلة قابلة للتدقيق"],
+    ["راكب نقدي لا يدفع","P1","سياسة الدفع النقدي المعتمدة والتحصيل"],
+    ["كوبون ينتج أجرة سالبة","P0","رفض/تقييد الخصم مع حفظ قواعد أجر السائق"],
+    ["طالب يريد تقسيم حجز المجموعة","P1","التزامات منفصلة لكل راكب؛ لا ديون غامضة"],
+  ],
+  "الأمان والخصوصية والاحتيال": [
+    ["حساب وهمي ينضم لمجموعات","P0","توثيق وتقييد الإساءة"],
+    ["محاولة معرفة سكن طالب","P0","إخفاء موقع المنزل الدقيق قبل الحاجة"],
+    ["مشاركة دعوة المجموعة علناً","P1","دعوات محددة النطاق ومنتهية الصلاحية"],
+    ["مضايقة راكب لآخر","P0","إبلاغ وحظر واستبعاد من المجموعات"],
+    ["شخص آخر يستخدم حساب الطالب","P0","فحوص هوية مناسبة"],
+    ["نظام التوصية يقترح كشف بيانات محظورة","P0","منع الكشف؛ التفويض خارج النموذج"],
+    ["تلاعب بـGPS للحصول على سعر أرخص","P1","كشف الشذوذ والتحقق من واقعية المسار"],
+    ["محاولة الدفع خارج جيني","P1","قواعد الدفع داخل التطبيق والإبلاغ"],
+    ["قاصر يسجل كطالب جامعي","P0","تطبيق شروط العمر والأهلية"],
+    ["طالب يحتاج مركبة مهيأة","P0","مطابقة فقط مع سعة ومعدات فعلية"],
+    ["حالة طوارئ في رحلة مشتركة","P0","مساعدة طارئة ومشاركة الرحلة"],
+    ["مركبة السائق لا تطابق المرسلة","P0","عدم الصعود وتفعيل الإبلاغ والدعم"]
+  ]
+};
+
+const QA = [
+  ["لماذا هذا أفضل من مجموعة واتساب؟","مطابقة تلقائية، وجدوى مسار، وأسعار شفافة، وجدولة متكررة، وحالة حجز، واسترداد عند الفشل."],
+  ["أين الذكاء الاصطناعي فعلاً، ولماذا ليس في كل شيء؟","الذكاء الاصطناعي عندنا في التنبؤ: توقع الطلب، ومخاطر الإلغاء، وزمن الرحلة وعدم اليقين (P90) — حيث المطلوب تقدير شيء غير مؤكد. أما القرار (القيود، السعر، الموافقات، القانون) فتتخذه خوارزميات حتمية لأن نتيجتها يجب أن تكون مضمونة وقابلة للتفسير. وأي نموذج معطل يعيدنا لقيم آمنة."],
+  ["كيف تضمنون أجرة أرخص؟","لا نضمن كل مطابقة. نعرض عروضاً ممكنة ومعتمدة بالسياسة، ونرجع للبديل عندما لا تفيد المشاركة."],
+  ["ماذا لو لم ينضم طلاب؟","يبقى سير عمل الرحلة المتكررة يعمل؛ المشاركة اختيارية."],
+  ["ماذا لو ألغى السائق؟","استرداد الإرسال مع إعادة تقييم الموعد النهائي وإبلاغ الركاب بوضوح."],
+  ["كيف تربح جيني؟","تحسين استخدام المركبات وكفاءة ساعات السائق، رهناً بالتحقق من التكلفة والتسعير الفعليين."],
+  ["كيف تحمون عناوين الطلاب؟","موقع تقريبي أثناء الاكتشاف، والتفاصيل الدقيقة لمشاركي الرحلة المخوّلين فقط."],
+  ["هل يتوسع النظام؟","فلترة المرشحين، تحسين محدود، إعادة حساب غير متزامنة، والتزامات مؤكدة مستقرة."],
+  ["هل تحتاجون بيانات تدريب؟ ومن أين؟","النماذج الثلاثة مدرَّبة هنا على بيانات اصطناعية بنمط معروف لأننا لا نملك بيانات جيني، ومقيَّمة على فترة لم تُستخدم في التدريب. في الإنتاج نعيد التدريب على رحلات حقيقية بموافقة الطلاب ونراقب المعايرة."],
+  ["هل الالتقاء المشترك قانوني في الأردن؟","يختلف حسب فئة النقل؛ الإطلاق يتطلب تحققاً من جيني/هيئة تنظيم النقل البري، والنموذج الأولي مشروط بالترخيص."],
+  ["لماذا سيستخدمه الطلاب أسبوعياً؟","جداولهم تتكرر، والنظام يقلل عدد الإجراءات المطلوبة في كل رحلة."]
+];
+
+const DECISIONS = [
+  ["D1","نية الحجز الأساسية","موعد الوصول أولاً، ثم تفضيل المغادرة"],
+  ["D2","هوية المجموعة","دوائر رحلات دائمة منفصلة عن مجموعات مؤقتة"],
+  ["D3","الاكتشاف","معلومات مجهولة/تقريبية قبل الالتزام"],
+  ["D4","المطابقة","قيود صارمة ثم تحسين موزون"],
+  ["D5","تغيير الحجز المؤكد","لا تغيير جوهري بدون تفويض أو موافقة"],
+  ["D6","زيادة السعر بعد التأكيد","لا زيادة أحادية فوق السقف المقبول"],
+  ["D7","الجداول المتكررة","نولّد «نوايا» ونشترط تفويضاً للحجز"],
+  ["D8","المشاركة الفورية","مطابقة تكيفية ضمن أقصى انتظار يقبله المستخدم"],
+  ["D9","تخصيص السائق","تكوين المجموعة منفصل عن الإرسال الفعلي"],
+  ["D10","قلة الطلب","بديل صريح: رحلة فردية شفافة"],
+  ["D11","سلطة وحدات التنبؤ والتوصية","تنبؤ واقتراح فقط؛ قواعد النطاق هي المرجع"],
+  ["D12","قانونية النشر","ميزة المشاركة مقيّدة بتصاريح التشغيل المعتمدة"],
+  ["D13","جغرافيا التحسين","جامعة واحدة وممرات محدودة أولاً"],
+  ["D14","تقييم الهاكاثون","محاكاة قابلة للتكرار مقابل الحجز الفردي"],
+  ["D15","عضوية المجموعة","موافقة صريحة على الخصوصية والعضوية"]
+];
+
+const RESP=[
+ ['1','التنبؤ بالطلب يجب أن يكون خوارزمية لا ذكاء اصطناعي لأنه يحتاج بيانات للتدريب','مُحدَّث','كان: خوارزمية. أصبح: نموذج تعلّم آلي (مع بقاء الحدس صحيحاً)','ملاحظتك صحيحة أن التنبؤ يحتاج بيانات. لذلك درّبنا النموذج على بيانات اصطناعية وقيّمناه، ويُعاد تدريبه على البيانات الحقيقية بعد الإطلاق. بعد معرفة أن 20% من التقييم للذكاء الاصطناعي، هذا أنسب مكان للدمج. انظر القسم 2ب.'],
+ ['2','محرك توافق المجموعات: خوارزميات فقط','نُفِّذ','موافق: خوارزمية قيود حتمية','هذه مسألة جدوى وتحسين، ونتيجتها يجب أن تكون قابلة للتفسير والاختبار بنفس المدخلات. عُدِّل وصف القدرة B.'],
+ ['3','حساب وقت المغادرة: خوارزمية','مُحدَّث','الصيغة تبقى، وزمن الرحلة وهامشها من نموذج P90','الصيغة هي التي تقرر وقت الالتقاء، لكن الهامش لم يعد رقماً ثابتاً: يتنبأ به نموذج زمن الرحلة. انظر القسم 2ب.'],
+ ['4','اعرض مقايضة التكلفة بالوقت المدخَّر','نُفِّذ','أُضيفت أداة تفاعلية','في قسم 2 أداة جديدة: قيمة وقتك + دقائق الانتظار/التبكير الإضافية + التوفير المالي ← صافي المنفعة ونقطة التعادل. إن كان الصافي سالباً يعرض النظام الرحلة الأسرع.'],
+ ['5','نموذج اللغة لإدخال الجدول: هدر tokens وغير منظم ولا ضمان للأخطاء','مرفوض','أُلغي نموذج اللغة؛ نموذج منظم بدلاً منه','شبكة أسبوعية بحقول محددة وتحقق فوري (AM/PM، الميزانية، التعارض). مدخلات صحيحة بالتصميم، بلا تكلفة tokens، وبلا غموض تفسير. حُذف من قائمة الميزات وسيناريو العرض.'],
+ ['6أ','السماح بإضافة ركاب أثناء الرحلة قبل منتصفها','نُفِّذ','موافق بشروط','يُقبل راكب جديد قبل منتصف المسار فقط، وبشرط ألا يتجاوز أحد انحرافه أو موعده أو سقف أجرته، وبموافقة الركاب الحاليين. بعد المنتصف يذهب لعرض آخر.'],
+ ['6ب','إنهاء كل شيء قبل الرحلة بوقت كافٍ لأن نفس اليوم قد يُفسد الرحلة','نُفِّذ','موافق: إغلاق مبكر للتجميع','قيمة افتراضية 12 ساعة قابلة للضبط (افتراض مني وليس رقماً من جيني). بعد الإغلاق لا تغييرات مفاجئة؛ وطلب نفس اليوم يُعامَل كرحلة فردية أو انضمام لمجموعة قائمة بشروطها.'],
+ ['7','السعر يُعرض كنطاق','نُفِّذ','موافق: نطاق من–إلى','يُعرض النطاق أثناء تكوّن المجموعة. عند قبول الطالب يُجمَّد الحد الأعلى للنطاق كسقف لن يُتجاوز، وقد يدفع أقل منه. أُضيف شريط «هامش عدم اليقين» في المحاكي.'],
+ ['8','اشرح أكثر: «احترام شروط الباقين» عند الإلغاء بعد الالتزام','نُفِّذ','شرح مفصّل أدناه','مثال افتراضي: رحلة بـ9 د لثلاثة طلاب (3 د لكل منهم). يلغي أحدهم. إعادة الحساب الساذجة تجعل الاثنين يدفعان 4.5 د — وهذا مرفوض لأنهم قبلوا سقف 3 د.'],
+ ['9','حذف: السائق يطلب مبلغاً نقدياً إضافياً','نُفِّذ','حُذف من جدول التسعير','يبقى هذا شأن قواعد سلوك السائقين والإبلاغ خارج منطق التسعير.'],
+ ['10','بدل «عرض بديل شفاف»: تابع البحث عن عرض آخر قد يكون أفضل وإن أخذ وقتاً','نُفِّذ','موافق بحد زمني','عندما لا تكون المشاركة مجدية يواصل النظام البحث عن مجموعة أفضل حتى وقت الإغلاق، مع بقاء خيار الرحلة الفردية الفورية متاحاً للطالب في أي لحظة.'],
+ ['11','ميزة: اقتراح أماكن للحصول على عروض ومجموعات أفضل مثل محطات الباص','نُفِّذ','أُضيفت ميزة جديدة (P1)','نقاط التقاء مقترحة قرب البيت ضمن حد المشي (محطات باص، مواقف آمنة وقانونية) يتجمع عندها طلاب أكثر. يعرض النظام: «امشِ 4 دقائق أكثر ← مجموعة متاحة وأرخص». حسابها خوارزمية عنقدة جغرافية للطلبات، لا ذكاء اصطناعي.'],
+ ['12','ميزة: إضافة عدة ركاب محليين من حسابي مثل أخي','نُفِّذ','أُضيفت ميزة جديدة (P1)','يضيف صاحب الحساب مرافقين (اسم ورقم تواصل فقط). تُحتسب مقاعدهم كاملة في السعة، ويدفع صاحب الحساب أو يُقسَّم الدفع، ولا يُكشف عنوانهم للمجموعة. تعالج أيضاً حالة «4 طلاب يطلبون 5 مقاعد».'],
+ ['13','سؤال الحكام: بدنا خوارزميات مش ذكاء اصطناعي','نُفِّذ','أُعيدت صياغة السؤال والجواب','أصبح السؤال «لماذا خوارزميات وليس ذكاءً اصطناعياً؟» بجواب: قيود حتمية، لا بيانات تدريب، لا tokens، قابلية تفسير، ومسار ترقية لاحق.']
+];
+
+</script>
+<script>
+const $=s=>document.querySelector(s);
+const el=(h)=>{const t=document.createElement('template');t.innerHTML=h.trim();return t.content.firstChild};
+const C={teal:'#2dd4bf',blue:'#60a5fa',amber:'#fbbf24',red:'#f87171',green:'#4ade80',violet:'#a78bfa',line:'#25335a',card:'#16213a',mute:'#9fb0d0'};
+const fmt=m=>{m=Math.round(m);const h=Math.floor(m/60),mm=m%60;return h+':'+String(mm).padStart(2,'0')};
+
+/* ---------- Nav ---------- */
+(function(){
+  const nav=$('#nav');
+  document.querySelectorAll('[data-nav]').forEach(s=>{
+    const a=el(`<a href="#${s.id}">${s.dataset.nav}</a>`);nav.appendChild(a);
+  });
+  const links=[...nav.querySelectorAll('a')];
+  const secs=[...document.querySelectorAll('[data-nav]')];
+  addEventListener('scroll',()=>{
+    let cur=secs[0];secs.forEach(s=>{if(s.getBoundingClientRect().top<160)cur=s});
+    links.forEach(l=>l.classList.toggle('active',l.getAttribute('href')==='#'+cur.id));
+  });
+})();
+
+/* ---------- Five problems ---------- */
+$('#five').innerHTML=[
+ ['💰','التكلفة','نقل أرخص بشكل ملموس للطلاب'],
+ ['😌','الراحة','إلغاء البحث وتنظيم الرحلات اليومي'],
+ ['⏰','الموثوقية','الوصول للجامعة قبل المحاضرة'],
+ ['🛡','الثقة','سفر جماعي آمن ومتوقع ومريح'],
+ ['📈','الجدوى','كل رحلة مقبولة عملية للسائق ولجيني']
+].map((x,i)=>`<div class="card"><div class="big">${x[0]}</div><h4>${i+1}. ${x[1]}</h4><p>${x[2]}</p></div>`).join('');
+
+/* ---------- Concepts ---------- */
+$('#concepts').innerHTML=[
+ ['Commute Profile','ملف التنقّل','تفضيلات الطالب وقيوده','الجامعة، أقصى ميزانية، حد المشي'],
+ ['Schedule Rule','قاعدة الجدول','الرحلات المقصودة المتكررة','الأحد والثلاثاء والخميس 8 صباحاً'],
+ ['Ride Request','طلب رحلة','حدوث واحد يحتاج نقلاً','الثلاثاء 17 نوفمبر'],
+ ['Ride Circle','دائرة ركوب','مجموعة رفاق مفضّلين محفوظة','ثلاثة أصدقاء يسافرون معاً'],
+ ['Ride Offer','عرض رحلة','رحلة مقترحة بوقت وسعر ومجموعة','3 مقاعد بـ2.40 دينار للفرد'],
+ ['Confirmed Trip','رحلة مؤكدة','رحلة ملتزم بها بسعة وإرسال فعليين','سائق معيّن والالتقاء مؤكد']
+].map(c=>`<div class="card"><h4>${c[1]}</h4><div style="direction:ltr;text-align:right;color:var(--blue);font-size:13px;font-weight:700">${c[0]}</div><p>${c[2]}</p><div class="eg">مثال: ${c[3]}</div></div>`).join('');
+
+function box(x,y,w,h,t,col,txt='#06101f',sub){
+  const lines=t.split('\n');
+  const ty=y+h/2-(lines.length-1)*9+5;
+  return `<rect x="${x}" y="${y}" width="${w}" height="${h}" rx="12" fill="${col}"/>`+
+   lines.map((l,i)=>`<text x="${x+w/2}" y="${ty+i*18}" text-anchor="middle" font-size="14.5" font-weight="700" fill="${txt}">${l}</text>`).join('');
+}
+function defsArrow(id,col){return `<marker id="${id}" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="${col}"/></marker>`}
+
+/* chain */
+(function(){
+  const names=[['ملف التنقّل',C.blue],['قاعدة الجدول',C.blue],['طلب رحلة',C.teal],['عرض رحلة',C.amber],['رحلة مؤكدة',C.green]];
+  let s=`<svg viewBox="0 0 1000 230"><defs>${defsArrow('a1',C.mute)}</defs>`;
+  names.forEach((n,i)=>{const x=830-i*200;s+=box(x,20,150,56,n[0],n[1]);
+    if(i<4)s+=`<line x1="${x}" y1="48" x2="${x-48}" y2="48" stroke="${C.mute}" stroke-width="2" marker-end="url(#a1)"/>`});
+  s+=box(430,150,170,52,'دائرة ركوب (اختيارية)','#0e172b',C.text||'#e8edf7');
+  s+=`<rect x="430" y="150" width="170" height="52" rx="12" fill="none" stroke="${C.violet}" stroke-width="2" stroke-dasharray="6 4"/>`;
+  s+=`<path d="M515 150 V120 H405 V76" fill="none" stroke="${C.violet}" stroke-width="2" stroke-dasharray="6 4" marker-end="url(#a1)"/>`;
+  s+=`<text x="870" y="105" font-size="13" fill="${C.mute}" text-anchor="middle">تفضيلات ← نوايا متكررة ← حدوث فردي ← مقترح ← ملتزم به</text>`;
+  $('#chainSvg').innerHTML=s+'</svg>';
+})();
+
+/* ---------- AI capabilities ---------- */
+const AIC=[
+ {k:'A',t:'نموذج توقع الطلب',q:'كم طالباً سيسافر، وأين، ومتى؟',kind:'تعلّم آلي',
+  d:'انحدار يتعلم من الجداول المعلنة والسجل: يوم الأسبوع، أسبوع الامتحانات، اتجاه النمو. يتنبأ مثلاً بعدد طلبات صباح الأحد من منطقة معيّنة مع نطاق عدم يقين، فيبدأ النظام توليد العروض ويقترح نقاط التقاء (محطات باص) حيث يتوقع تجمعاً. الموعد القادم لا يُحجز بناءً عليه.',
+  inp:'الجداول المعلنة، منطقة الالتقاء التقريبية، تقويم الفصل، سجل الطلبات.',
+  out:'عدد الطلبات المتوقع + نطاق 80% لكل منطقة ونافذة.',
+  warn:'قابل للتجربة في «مختبر الذكاء الاصطناعي» (2ب). مدرَّب على بيانات اصطناعية الآن ومقيَّم على فترة لم يرها.'},
+ {k:'B',t:'محرك توافق المجموعات',q:'أي تركيبة طلبات تعطي أفضل مسار ممكن؟',kind:'خوارزمية قيود',
+  d:'الميزة التقنية الأساسية. لكل مجموعة محتملة يتحقق النظام من: هل يصل الجميع قبل موعدهم؟ هل يصلون لنقطة الالتقاء؟ هل الإشغال ضمن السعة؟ هل الانحراف مقبول؟ هل الأجرة المجمعة أقل من البدائل الفردية؟ هل أجر السائق مقبول؟ هل وافق الطلاب؟ هل الرحلة مسموحة تشغيلياً؟',
+  inp:'طلبات الرحلات، شبكة الطرق، السعة، قيود كل راكب، قواعد الامتثال.',
+  out:'مجموعات ممكنة فقط، مرتّبة بدالة التكلفة.',
+  warn:'خوارزمية حتمية بالكامل: نفس المدخلات تعطي نفس النتيجة، وكل قرار قابل للتفسير والاختبار. لا حاجة هنا لذكاء اصطناعي.'},
+ {k:'C',t:'التنبؤ بزمن الرحلة وعدم اليقين (P90)',q:'متى يجب أن يغادر الطالب ليصل بموثوقية؟',kind:'تعلّم آلي',
+  d:'يتنبأ النموذج بزمن الرحلة حسب المسافة والذروة والمطر، وبعدم اليقين حوله (P50 وP90). ثم تحسب الصيغة وقت الالتقاء = الموعد − زمن الرحلة − هامش الأمان، حيث الهامش = P90 − P50 وليس رقماً ثابتاً. كما يُنتج احتمال الوصول في الوقت لكل عرض (درجة الموثوقية).',
+  inp:'المسافة، وقت اليوم، الطقس، موعد الوصول.',
+  out:'P50 وP90، الهامش المقترح، واحتمال الوصول في الوقت.',
+  warn:'الصيغة هي التي تقرر وقت الالتقاء؛ النموذج يغذّيها بالتقدير فقط. جرّبه في القسم 2ب.'},
+ {k:'D',t:'وقت مطابقة تكيّفي',q:'لماذا ينتظر كل طالب 15 دقيقة بالضبط؟',kind:'قواعد',
+  d:'إذا وُجد 3 ركاب متوافقين فطابق فوراً. وإن كان متوقعاً ظهور طلب متوافق فانتظر ضمن حد الانتظار الذي قبله الراكب. ويُغلق التجميع قبل موعد الرحلة بوقت كافٍ (قيمة افتراضية قابلة للضبط، مثلاً 12 ساعة) حتى لا يتغير شيء في نفس اليوم. وبعد انطلاق الرحلة يمكن إضافة راكب قبل منتصف المسار فقط وبشروط صارمة.',
+  inp:'الطلبات الحالية، الوقت المتبقي للإغلاق، حد الانتظار المقبول.',
+  out:'قرار: اعرض الآن / تابع البحث / أغلق وقدّم البديل.',
+  warn:'قواعد شفافة قابلة للتفسير أفضل من تدريب سياسة بلا بيانات.'},
+ {k:'E',t:'قواعد كشف سوء الاستخدام',q:'هل تؤثر طلبات وهمية أو إلغاءات متكررة على الموثوقية؟',kind:'قواعد',
+  d:'عتبات وقواعد بسيطة: عدد الإلغاءات المتكررة، شذوذ GPS، الحسابات الجديدة المتكررة الانضمام، محاولات الدفع خارج المنصة. تكمّل — ولا تتعارض — مع سياسة الاحتيال العامة لجيني.',
+  inp:'سلوك الحساب، شذوذ المسار، أنماط الإلغاء.',
+  out:'إشارات مخاطر تُراجَع بالقواعد.',
+  warn:'يمكن لاحقاً تحسينها بالتعلّم الآلي عند توفر بيانات مصنّفة، وليس قبل ذلك.'},
+ {k:'F',t:'إدخال الجدول المنظم (بدل نموذج لغة)',q:'كيف يُدخل الطالب جدوله دون أخطاء تفسير؟',kind:'واجهة منظمة',
+  d:'شبكة أسبوعية: يختار الطالب الأيام ويدخل وقت الوصول والمغادرة والميزانية وحد المشي عبر قوائم وحقول بقيم محدودة. كل حقل يُتحقق منه فوراً (AM/PM صريح، ميزانية رقمية، وقت ضمن الدوام، تعارض بين القواعد)، ثم يراجع الطالب الجدول قبل الحفظ.',
+  inp:'اختيارات الطالب من حقول منظمة.',
+  out:'قواعد جدول صالحة 100% تتحول مباشرة إلى طلبات رحلات.',
+  warn:'استبعدنا نموذج اللغة: يستهلك tokens، وقد يفسّر خطأً، ولا ضمان لخلوّ مخرجاته من الأخطاء، بينما النموذج المنظم ينتج مدخلات صحيحة بالتصميم.'},
+ {k:'G',t:'نموذج مخاطر الإلغاء',q:'ما احتمال أن يلغي هذا الراكب؟',kind:'تعلّم آلي',
+  d:'انحدار لوجستي يستخدم يوم الرحلة، ونسبة الإلغاء السابقة، وكم قبل الرحلة حُجزت، وأسبوع الامتحانات. عند الخطر المتوسط/المرتفع يُرسل تذكير ويُجهَّز بديل في قائمة الانتظار لملء المقعد مبكراً. يحل جزءاً كبيراً من مشكلة إلغاء راكب بعد الالتزام.',
+  inp:'سلوك الراكب السابق، توقيت الحجز، التقويم.',
+  out:'احتمال الإلغاء 0–100%.',
+  warn:'يُستخدم لتجهيز البدائل فقط. لا يُعاقب الطالب ولا يُرفض طلبه بسببه.'}
+];
+(function(){
+  const tabs=$('#aiTabs');
+  function show(i){
+    [...tabs.children].forEach((b,j)=>b.classList.toggle('on',i===j));
+    const a=AIC[i];
+    $('#aiPanel').innerHTML=`<h4>${a.k} — ${a.t} <span class="pill P2">${a.kind}</span></h4><p class="lead" style="margin-bottom:0">${a.q}</p><p>${a.d}</p>
+      <div class="kv"><b>المدخلات</b><span>${a.inp}</span><b>المخرجات</b><span>${a.out}</span><b>ملاحظة</b><span class="warn" style="font-weight:400;color:var(--amber)">${a.warn}</span></div>`;
+  }
+  AIC.forEach((a,i)=>{const b=el(`<button class="tab">${a.k} · ${a.t}</button>`);b.onclick=()=>show(i);tabs.appendChild(b)});
+  show(0);
+})();
+
+/* ---------- Departure calculator ---------- */
+(function(){
+  const dl=$('#dl'),tj=$('#tj'),tb=$('#tb');
+  function up(){
+    const D=420+ +dl.value,J=+tj.value,B=+tb.value,P=D-J-B;
+    $('#dlo').textContent=fmt(D);$('#tjo').textContent=J+' د';$('#tbo').textContent=B+' د';
+    $('#deptRes').innerHTML=`وقت الالتقاء الأخير: <span class="big">${fmt(P)}</span> &nbsp; (الموعد ${fmt(D)} − الرحلة ${J} د − الهامش ${B} د)`;
+    const tot=J+B,w=900;const sc=w/Math.max(tot+10,45);
+    $('#deptSvg').innerHTML=`<svg viewBox="0 0 1000 90" style="margin-top:12px"><g transform="translate(950,0) scale(-1,1)">
+     <rect x="0" y="20" width="${B*sc}" height="30" rx="6" fill="${C.amber}"/><rect x="${B*sc}" y="20" width="${J*sc}" height="30" rx="6" fill="${C.blue}"/></g>
+     <text x="${950-B*sc/2}" y="40" text-anchor="middle" font-size="12" fill="#06101f" font-weight="700">هامش ${B}</text>
+     <text x="${950-B*sc-J*sc/2}" y="40" text-anchor="middle" font-size="12" fill="#06101f" font-weight="700">رحلة ${J}</text>
+     <text x="${950-tot*sc}" y="75" text-anchor="middle" font-size="13" fill="${C.green}" font-weight="700">الالتقاء ${fmt(P)}</text>
+     <text x="950" y="12" text-anchor="middle" font-size="13" fill="${C.red}" font-weight="700">الموعد ${fmt(D)}</text></svg>`;
+  }
+  const vt=$('#vt'),xm=$('#xm'),sv=$('#sv');
+  function tm(){
+    const V=+vt.value,X=+xm.value,S=+sv.value,cost=X/60*V,net=S-cost,be=V>0?S/V*60:0;
+    $('#vto').textContent=V.toFixed(1)+' د/ساعة';$('#xmo').textContent=X+' د';$('#svo').textContent=S.toFixed(2)+' د';
+    $('#tmRes').innerHTML=`تكلفة الوقت الإضافي: <b>${cost.toFixed(2)} د</b> مقابل توفير <b>${S.toFixed(2)} د</b> ← صافي <span class="${net>=0?'ok':'warn'} big">${net>=0?'+':''}${net.toFixed(2)} د</span><br>
+    ${net>=0?'<span class="ok">✔ المشاركة تستحق</span>':'<span class="warn">✘ المشاركة لا تستحق لهذا الطالب: يعرض النظام الرحلة الأسرع</span>'} — نقطة التعادل: <b>${be.toFixed(0)}</b> دقيقة إضافية.`;
+  }
+  [vt,xm,sv].forEach(i=>i.oninput=tm);tm();
+  [dl,tj,tb].forEach(i=>i.oninput=up);up();
+})();
+
+/* ---------- Matching stages ---------- */
+$('#stages').innerHTML=[
+ ['إيجاد المرشحين المتوافقين','نفس الجامعة/وجهة متقاربة، نوافذ وصول متداخلة، تداخل معقول في شبكة الطرق، إعدادات المجموعة والخصوصية متوافقة، فئة مركبة وسعة مناسبتان. نستخدم الفهرسة الجغرافية ودلاء الزمن لتقليص البحث — لا نختبر كل التجميعات في المدينة.'],
+ ['بناء المسارات الفعلية','لكل مجموعة نحسب تسلسل الالتقاء وأوقات الوصول. مثال: التقاء A الساعة 7:18 (طالبان عند نقطة آمنة) ← B الساعة 7:25 ← بوابة الجامعة 7:52 قبل موعد 8:00. لا نفترض أن أقرب شخص هو الأفضل؛ نقيّم الترتيبات الممكنة بشرط الالتقاء قبل التوصيل. في الهاكاثون: بحث شامل صغير أو إدراج جشع.'],
+ ['تطبيق القيود الصارمة','الوصول ≤ الموعد، المشي ≤ الأقصى، الانحراف ≤ الأقصى، الأجرة ≤ الميزانية المقبولة، الإشغال ≤ المقاعد. مع موافقة صالحة وأهلية سائق ونطاق جغرافي وترخيص قانوني. التوافق «مسألة جدوى» قبل أن يصبح «مسألة توصية».'],
+ ['ترتيب المجموعات الممكنة','بعد الجدوى نُصغّر تكلفة موزونة J. الترتيب: أولاً السلامة والقانونية والمواعيد والالتزامات المؤكدة، ثانياً جودة رحلة وأقتصاد سائق مقبولان، ثالثاً أجرة وانتظار وانحراف أقل واستخدام أسطول أفضل. هكذا لا نوصي بمجموعة رخيصة تتأخر بأحد.'],
+ ['تحسين الدفعة كاملة','قد يشكّل A وB وC مجموعة، ويمكن لـA وD أيضاً. اختيار الأرخص لـA وحده قد يمنع حلاً أفضل للأربعة. نضمن أن الطالب في رحلة مؤكدة واحدة على الأكثر: في المحاكاة نعدّد المجموعات ونختار مجموعة غير متداخلة بأفضل نتيجة؛ وبحجم أكبر يصبح set-packing أو vehicle-routing.'],
+ ['إعادة الحساب دون كسر الوعود','العروض غير المؤكدة تُحسَّن بقوة. الرحلات المؤكدة لا تُعاد ترتيبها عرَضاً. لا يُدرج طالب جديد في مركبة مؤكدة إذا زاد أجرة أحد، أو تجاوز انحرافه المقبول، أو خالف موعده، أو كسر قيود الخصوصية. الحجوزات المؤكدة قيود على التحسين اللاحق، لا متغيرات حرة.']
+].map((s,i)=>`<div class="stage"><div class="dot">${i+1}</div><div class="body"><h4>${s[0]}</h4><p style="color:var(--mute);font-size:15.5px">${s[1]}</p></div></div>`).join('');
+
+/* ---------- Group compatibility demo ---------- */
+(function(){
+  const S=[
+   {n:'A',area:'حي إربد 1',a:1,dl:480,bud:3.0},
+   {n:'B',area:'حي إربد 1',a:1,dl:490,bud:3.5},
+   {n:'C',area:'حي إربد 2',a:2,dl:480,bud:2.8},
+   {n:'D',area:'حي إربد 3',a:3,dl:540,bud:2.5}
+  ];
+  const BASE={1:25,2:30,3:35},CAP=3,BUF=8,EARLY=30,SOLO=5;
+  const sel=new Set(['A','B','C']);
+  const box=$('#stuChips');
+  S.forEach(s=>{
+    const c=el(`<div class="chip"><b>الطالب ${s.n}</b><small>${s.area}</small><small>الوصول ${fmt(s.dl)} · أقصى ${s.bud.toFixed(2)} د</small></div>`);
+    c.onclick=()=>{sel.has(s.n)?sel.delete(s.n):sel.add(s.n);draw()};box.appendChild(c);s.el=c;
+  });
+  function draw(){
+    S.forEach(s=>s.el.classList.toggle('sel',sel.has(s.n)));
+    const g=S.filter(s=>sel.has(s.n));
+    if(g.length<2){$('#grpRes').innerHTML='اختر طالبين على الأقل.';return}
+    const areas=new Set(g.map(s=>s.a));
+    const route=Math.max(...g.map(s=>BASE[s.a]))+5*(areas.size-1);
+    const T=Math.min(...g.map(s=>s.dl))-BUF;
+    const dep=T-route;
+    const total=4.5+0.5*areas.size,per=total/g.length;
+    const checks=[];
+    checks.push([g.length<=CAP,`السعة: ${g.length} من ${CAP} مقاعد`]);
+    g.forEach(s=>{
+      checks.push([T<=s.dl,`${s.n}: الوصول ${fmt(T)} ≤ الموعد ${fmt(s.dl)}`]);
+      checks.push([T>=s.dl-EARLY,`${s.n}: لا يصل مبكراً أكثر من ${EARLY} د (يصل ${fmt(T)} والموعد ${fmt(s.dl)})`]);
+      checks.push([per<=s.bud,`${s.n}: الأجرة ${per.toFixed(2)} د ≤ ميزانيته ${s.bud.toFixed(2)} د`]);
+    });
+    const ok=checks.every(c=>c[0]);
+    $('#grpRes').innerHTML=(ok?`<div class="ok" style="font-size:18px">✔ مجموعة ممكنة — تدخل مرحلة الترتيب</div>`:`<div class="warn" style="font-size:18px">✘ مجموعة مرفوضة — لا تُعرض على أحد</div>`)+
+      `<div style="margin:8px 0;color:var(--mute)">مسار تقريبي: ${route} د · الالتقاء ${fmt(dep)} · الوصول ${fmt(T)} · الأجرة للفرد ${per.toFixed(2)} د (مقابل ${SOLO.toFixed(2)} د فردياً)</div>`+
+      checks.map(c=>`<div>${c[0]?'<span class="ok">✔</span>':'<span class="warn">✘</span>'} ${c[1]}</div>`).join('')+
+      `<p class="note">زمن الرحلة والأجرة هنا افتراضات توضيحية: 25/30/35 د حسب الحي (+5 د لكل حي إضافي)، هامش 8 د، سعة 3 مقاعد.</p>`;
+  }
+  draw();
+})();
+
+/* ---------- Match-time table ---------- */
+$('#matchTime').innerHTML='<tr><th>الوضع</th><th>إجراء النظام</th></tr>'+[
+ ['مجموعة متوافقة قوية متاحة','اعرض المجموعة الآن'],
+ ['ركاب إضافيون محتملون ووقت كافٍ','تابع البحث ضمن النافذة المتفق عليها'],
+ ['موعد وصول الطالب يقترب','توقف عن الانتظار وقدّم أسرع بديل ممكن'],
+ ['لا سائق يستطيع خدمة المجموعة','لا تؤكد الرحلة'],
+ ['ثقة النظام منخفضة','اعرض عدم اليقين بدل وعد بتوفير'],
+ ['اقتراب إغلاق التجميع قبل الرحلة بوقت كافٍ (افتراضياً 12 ساعة)','أغلق المجموعة؛ لا تغييرات مفاجئة في نفس اليوم، ويبقى البديل الفردي'],
+ ['راكب جديد مناسب أثناء الرحلة (قبل منتصف المسار)','يُقبل فقط إن لم يتجاوز أحد انحرافه أو موعده أو سقف أجرته، وبموافقة الركاب الحاليين'],
+ ['راكب جديد بعد منتصف المسار','لا يُقبل؛ ينتقل لعرض آخر']
+].map(r=>`<tr><td>${r[0]}</td><td>${r[1]}</td></tr>`).join('');
+
+/* ---------- Pricing sim ---------- */
+(function(){
+  const ids=['pf','pn','ps','pc','pu'],g=i=>+$('#'+i).value;
+  function up(){
+    const f=g('pf'),n=g('pn'),s=g('ps'),c=g('pc');
+    const u=g('pu');$('#puo').textContent='±'+u+'%';
+    $('#pfo').textContent=f.toFixed(1)+' د';$('#pno').textContent=n;$('#pso').textContent=s.toFixed(1)+' د';$('#pco').textContent=c.toFixed(1)+' د';
+    const sep=f*n,per=s/n,save=(f-per)/f*100,margin=s-c;
+    const max=Math.max(sep,s,c,1)*1.1;
+    const bar=(y,v,col,l)=>`<rect x="${950-v/max*760}" y="${y}" width="${Math.max(v/max*760,2)}" height="34" rx="6" fill="${col}"/>
+      <text x="${950-v/max*760-8}" y="${y+23}" text-anchor="end" font-size="15" font-weight="700" fill="#e8edf7">${v.toFixed(1)} د</text>
+      <text x="990" y="${y+23}" text-anchor="end" font-size="14" fill="${C.mute}"></text>`;
+    $('#priceSvg').innerHTML=`<svg viewBox="0 0 1000 190" style="margin-top:8px">
+      ${bar(8,sep,C.red,'')}${bar(58,s,C.teal,'')}${bar(108,c,C.amber,'')}
+      <text x="980" y="30" text-anchor="end" font-size="13" fill="${C.mute}"></text>
+      </svg>
+      <div class="legend"><span><i class="sw" style="background:${C.red}"></i>إجمالي ما يدفعه الركاب منفصلين</span><span><i class="sw" style="background:${C.teal}"></i>إجمالي الرحلة المشتركة</span><span><i class="sw" style="background:${C.amber}"></i>تكلفة السائق + المنصة + الهامش المطلوب</span></div>`;
+    const ok=margin>=0;
+    $('#priceRes').innerHTML=`توفير الطالب الواحد: <span class="big">${save.toFixed(0)}%</span> (يدفع ${per.toFixed(2)} د بدل ${f.toFixed(2)} د)<br>نطاق السعر المعروض: <b>${(per*(1-u/100)).toFixed(2)} – ${(per*(1+u/100)).toFixed(2)} د</b> — السقف الأعلى (${(per*(1+u/100)).toFixed(2)} د) هو ما يُجمَّد عند قبول الطالب، فلا يدفع أكثر منه.<br>
+     جدوى الرحلة: ${ok?`<span class="ok">✔ الإيراد يغطي التكاليف (فائض ${margin.toFixed(1)} د)</span>`:`<span class="warn">✘ الإيراد أقل من التكاليف بـ${(-margin).toFixed(1)} د — لا نصنّع توفيراً، نعرض بديلاً شفافاً</span>`}`;
+  }
+  ids.forEach(i=>$('#'+i).oninput=up);up();
+})();
+
+/* ---------- Lifecycle SVG ---------- */
+(function(){
+  const W=150,H=50,xs=[840,640,440,240,40];
+  const N={
+   1:[xs[0],20,'رحلة مجدولة',C.blue],2:[xs[1],20,'البحث عن مرشحين',C.blue],3:[xs[2],20,'مجموعة ممكنة؟',C.violet,1],4:[xs[3],20,'عرض مُولَّد',C.teal],
+   5:[xs[3],170,'الطالب يقبل؟',C.violet,1],6:[xs[2],170,'حجز مقعد مؤقت',C.teal],7:[xs[1],170,'كل الالتزامات\nصالحة؟',C.violet,1],8:[xs[0],170,'مجموعة ملتزمة',C.green],
+   9:[xs[0],320,'إرسال معلّق',C.amber],10:[xs[1],320,'مركبة مؤمَّنة؟',C.violet,1],11:[xs[2],320,'التقاء مؤكد',C.green],12:[xs[3],320,'رحلة جارية',C.green],13:[xs[4],320,'مكتملة ومسوّاة',C.green],
+   F:[xs[4],170,'بدائل / رحلة\nفردية',C.red],R:[xs[1],420,'استرداد الإرسال\nوإبلاغ الركاب',C.red]
+  };
+  let s=`<svg viewBox="0 0 1000 490"><defs>${defsArrow('l1',C.mute)}${defsArrow('l2',C.red)}</defs>`;
+  const L=(d,col=C.mute,m='l1',dash='')=>`<path d="${d}" fill="none" stroke="${col}" stroke-width="2" ${dash?`stroke-dasharray="${dash}"`:''} marker-end="url(#${m})"/>`;
+  // main edges
+  s+=L('M840 45 H792')+L('M640 45 H592')+L('M440 45 H392');
+  s+=L('M315 70 V170')+L('M390 195 H440')+L('M590 195 H640')+L('M790 195 H840');
+  s+=L('M915 220 V320')+L('M840 345 H792')+L('M640 345 H592')+L('M440 345 H392')+L('M240 345 H192');
+  // fallbacks
+  s+=L('M515 70 V118 H115 V170',C.red,'l2','6 4')+L('M240 195 H192',C.red,'l2','6 4')+L('M715 220 V258 H115 V220',C.red,'l2','6 4')+L('M715 370 V420',C.red,'l2','6 4');
+  s+=`<text x="525" y="112" font-size="13" fill="${C.red}">لا</text><text x="722" y="252" font-size="13" fill="${C.red}">لا</text><text x="722" y="400" font-size="13" fill="${C.red}">لا</text><text x="224" y="188" font-size="13" fill="${C.red}">لا</text>`;
+  Object.values(N).forEach(n=>{
+    s+=box(n[0],n[1],W,H,n[2],n[3]);
+    if(n[4])s+=`<rect x="${n[0]}" y="${n[1]}" width="${W}" height="${H}" rx="12" fill="none" stroke="#fff" stroke-opacity=".5" stroke-dasharray="4 3"/>`;
+  });
+  s+=`<text x="520" y="486" font-size="13" fill="${C.mute}" text-anchor="middle">المربعات المتقطعة = نقاط قرار · الأحمر = مسار البدائل</text>`;
+  s+=`<text x="990" y="140" font-size="13" fill="${C.amber}" text-anchor="end">التزام المجموعة ≠ تأكيد السائق</text>`;
+  $('#lifeSvg').innerHTML=s+'</svg>';
+})();
+
+/* ---------- Edge cases ---------- */
+(function(){
+  const cats=Object.keys(EDGE),all=[];
+  cats.forEach(c=>EDGE[c].forEach(r=>all.push({cat:c,e:r[0],p:r[1],b:r[2]})));
+  const cnt=cats.map(c=>EDGE[c].length),maxc=Math.max(...cnt);
+  $('#edgeBar').innerHTML=cats.map((c,i)=>`<div class="row"><span>${c}</span><div class="bar" style="width:${cnt[i]/maxc*100}%;background:${C.blue}">${cnt[i]}</div></div>`).join('')+`<p class="note">الإجمالي: ${all.length} حالة</p>`;
+  const pc={P0:0,P1:0,P2:0};all.forEach(a=>pc[a.p]++);
+  $('#edgeDonut').innerHTML=donut([[pc.P0,C.red,'P0'],[pc.P1,C.amber,'P1'],[pc.P2,C.blue,'P2']],all.length,'حالة');
+  let cat='الكل',pr='الكل';
+  const t1=$('#edgeTabs'),t2=$('#prioTabs');
+  function tabs(host,list,cur,cb){host.innerHTML='';list.forEach(x=>{const b=el(`<button class="tab ${x===cur?'on':''}">${x}</button>`);b.onclick=()=>cb(x);host.appendChild(b)})}
+  function draw(){
+    tabs(t1,['الكل',...cats],cat,x=>{cat=x;draw()});
+    tabs(t2,['الكل','P0','P1','P2'],pr,x=>{pr=x;draw()});
+    const rows=all.filter(a=>(cat==='الكل'||a.cat===cat)&&(pr==='الكل'||a.p===pr));
+    $('#edgeTable').innerHTML='<tr><th style="width:36%">الحالة</th><th style="width:70px">الأولوية</th><th>السلوك المطلوب</th></tr>'+
+      rows.map(r=>`<tr><td>${r.e}${cat==='الكل'?`<div class="note">${r.cat}</div>`:''}</td><td><span class="pill ${r.p}">${r.p}</span></td><td>${r.b}</td></tr>`).join('');
+  }
+  draw();
+})();
+
+function donut(parts,total,label){
+  const R=70,CF=2*Math.PI*R;let off=0;
+  let s=`<svg viewBox="0 0 220 220" width="210"><g transform="rotate(-90 110 110)">`;
+  parts.forEach(p=>{const len=p[0]/total*CF;s+=`<circle cx="110" cy="110" r="${R}" fill="none" stroke="${p[1]}" stroke-width="28" stroke-dasharray="${len} ${CF-len}" stroke-dashoffset="${-off}"/>`;off+=len});
+  s+=`</g><text x="110" y="112" text-anchor="middle" font-size="34" font-weight="800" fill="#e8edf7">${total}</text><text x="110" y="136" text-anchor="middle" font-size="14" fill="${C.mute}">${label}</text></svg>`;
+  s+=`<div class="legend" style="justify-content:center">${parts.map(p=>`<span><i class="sw" style="background:${p[1]}"></i>${p[2]}: ${p[0]}</span>`).join('')}</div>`;
+  return s;
+}
+
+/* ---------- Deep problems ---------- */
+$('#deep').innerHTML=[
+ ['1','ماذا لو لم يستخدمه أحد؟ (السيولة)','المشاركة منتج «أثر شبكي». 100 طالب موزعون على 30 حياً وجامعات وأوقات مختلفة = معدل مطابقة سيئ مهما بدا العدد كبيراً.','ابدأ بممر كثافة عالية: جامعة واحدة، بضع مناطق التقاء، نافذتا/ثلاث نوافذ ذروة. ثم: إضافة نوافذ العودة، ثم ممرات أكثر، ثم جامعات. عند قلة الأدلة اعرض رحلة جيني عادية أو رحلة فردية متكررة محفوظة — لا خصماً وهمياً.'],
+ ['2','ماذا لو كانت الرحلة الرخيصة غير موثوقة؟','توفير دينار لا قيمة له إذا فوّت الطالب امتحاناً.','«درجة موثوقية وصول» لكل عرض. أولويات: الأقل تكلفة / متوازن / الوصول بموثوقية. كل المجموعات المعروضة يجب أن تحقق حداً أدنى إلزامياً — التفضيل لا يتجاوز موعداً صارماً.'],
+ ['3','ماذا لو أصبحت الدائرة غير مريحة اجتماعياً؟','الإبقاء على نفس المجموعة مفيد لكنه يحتاج ضمانات.','عضوية قابلة للضبط: بالدعوة فقط، مفتوحة للمتوافقين، موافقة لكل راكب جديد، أعضاء حاليون أولاً مع مطابقة بديلة. إمكانية المغادرة أو كتم الدائرة دون مواجهة، وحظر راكب دون تبرير. لا تُعرض مواقع المنازل علناً؛ تتوافق مع سياسة خصوصية جيني الأردنية منذ البداية.'],
+ ['4','كيف نمنع الأتمتة من الإزعاج؟','15 إشعاراً أسبوعياً ليست أتمتة بل مقاطعة متكررة.','ثلاثة مستويات استقلالية (اقترح / حضّر / احجز) وزر «إيقاف هذا الأسبوع». الهاكاثون: المستويان الأولان فقط.'],
+ ['5','ماذا لو كان الحل أمثلياً رياضياً وسيئاً اجتماعياً؟','قد يعطي المحسّن طالباً واحداً نقطة التقاء مزعجة كل مرة لأنها تقلل المسافة الكلية.','قيود عدالة فردية: PersonalBenefit = تكلفة البديل الخاص − الأجرة المشتركة − تكلفة الإزعاج. لا نوصي بمجموعة لمجرد أن التوفير الكلي موجب، ونمنع تكرار إسناد أطول مشي لنفس الطلاب عبر الأسابيع.']
+].map(d=>`<div class="card"><h4>المشكلة ${d[0]}: ${d[1]}</h4><p><b>الوصف:</b> ${d[2]}</p><p style="margin-top:6px"><b style="color:var(--green)">الحل:</b> ${d[3]}</p></div>`).join('');
+
+/* reliability demo */
+(function(){
+  const G=[{n:'المجموعة A',c:2.0,p:82},{n:'المجموعة B',c:2.5,p:97}];
+  $('#rel').innerHTML=`<div class="tabs" id="rm"></div>
+    <div class="sl"><label>الحد الأدنى الإلزامي للموثوقية</label><input id="rf" type="range" min="50" max="99" value="75"><output id="rfo"></output></div>
+    <div class="grid g2" id="rg"></div><div class="result" id="rr"></div>
+    <p class="note">احتمالات مخترعة لتوضيح المفاضلة؛ المنتج الحقيقي يجب أن يعاير الاحتمالات بنتائج الوصول الفعلية.</p>`;
+  let mode='الأقل تكلفة';
+  const rm=$('#rm');
+  ['الأقل تكلفة','متوازن','الوصول بموثوقية'].forEach(m=>{const b=el(`<button class="tab">${m}</button>`);b.onclick=()=>{mode=m;up()};rm.appendChild(b)});
+  function up(){
+    const f=+$('#rf').value;$('#rfo').textContent=f+'%';
+    [...rm.children].forEach(b=>b.classList.toggle('on',b.textContent===mode));
+    const el_=G.map(g=>({...g,ok:g.p>=f}));
+    $('#rg').innerHTML=el_.map(g=>`<div class="card" style="${g.ok?'':'opacity:.45'}"><h4>${g.n}</h4><div class="big">${g.c.toFixed(2)} د</div><p>احتمال الوصول في الوقت: <b>${g.p}%</b></p><p class="${g.ok?'ok':'warn'}">${g.ok?'✔ يحقق الحد الأدنى':'✘ مستبعد: أقل من الحد الإلزامي'}</p></div>`).join('');
+    const av=el_.filter(g=>g.ok);
+    let pick;
+    if(!av.length){$('#rr').innerHTML='<span class="warn">لا مجموعة تحقق الحد الأدنى — يعرض النظام البديل الأسرع الممكن بدل مجموعة غير موثوقة.</span>';return}
+    if(mode==='الأقل تكلفة')pick=av.reduce((a,b)=>a.c<=b.c?a:b);
+    else if(mode==='الوصول بموثوقية')pick=av.reduce((a,b)=>a.p>=b.p?a:b);
+    else pick=av.reduce((a,b)=>(.5*(1-a.c/3)+.5*a.p/100)>=(.5*(1-b.c/3)+.5*b.p/100)?a:b);
+    $('#rr').innerHTML=`التوصية في وضع «${mode}»: <b class="ok">${pick.n}</b> — ${pick.c.toFixed(2)} د، موثوقية ${pick.p}%`;
+  }
+  $('#rf').oninput=up;up();
+})();
+
+/* ---------- Architecture ---------- */
+(function(){
+  let s=`<svg viewBox="0 0 1000 510"><defs>${defsArrow('a2',C.mute)}</defs>`;
+  const ln=(d)=>`<path d="${d}" fill="none" stroke="${C.mute}" stroke-width="1.6" marker-end="url(#a2)"/>`;
+  s+=ln('M500 60 V90')+ln('M500 140 V156')+`<path d="M132 156 H868" stroke="${C.mute}" stroke-width="1.6" fill="none"/>`;
+  [132,377,622,867].forEach(x=>s+=ln(`M${x} 156 V172`));
+  s+=`<path d="M132 232 V252 H868 V232" fill="none" stroke="${C.mute}" stroke-width="1.6"/>`+ln('M500 252 V272');
+  s+=box(300,10,400,50,'تطبيق ويب للجوال (Mobile-first)',C.blue)+box(300,90,400,50,'واجهة التطبيق (Application API)',C.blue);
+  [['الجدولة والتكرار',20],['إدارة الدوائر والمجموعات',265],['دورة العرض والحجز',510],['الأجرة ومحاكاة الدفع',755]].forEach(m=>s+=box(m[1],172,225,60,m[0],C.teal));
+  s+=box(300,272,400,50,'منسّق المطابقة (Matching Orchestrator)',C.amber);
+  s+=`<path d="M500 322 V336" stroke="${C.mute}" stroke-width="1.6"/><path d="M185 336 H815" stroke="${C.mute}" stroke-width="1.6" fill="none"/>`;
+  [[40,'محرك القيود والامتثال'],[355,'مقدّر المسار والزمن'],[670,'محسّن المجموعات']].forEach(b=>{s+=box(b[0],352,290,52,b[1],C.amber);s+=ln(`M${b[0]+145} 336 V352`)});
+  s+=box(20,272,240,50,'نماذج التنبؤ (ML)',C.violet)+box(740,272,240,50,'مدقّق الجداول بالقواعد',C.violet);
+  s+=`<path d="M260 297 H300" stroke="${C.violet}" stroke-width="2" stroke-dasharray="5 3"/><path d="M700 297 H740" stroke="${C.violet}" stroke-width="2" stroke-dasharray="5 3"/>`;
+  [['PostgreSQL',20],['المهام والأحداث',265],['إشعارات لحظية',510],['محوّل إرسال جيني (محاكى)',755]].forEach(b=>s+=box(b[1],446,225,50,b[0],'#2a3a63','#e8edf7'));
+  s+=`<path d="M500 404 V425" stroke="${C.mute}" stroke-width="1.6"/><path d="M132 425 H868" stroke="${C.mute}" stroke-width="1.6"/>`;
+  [132,377,622,867].forEach(x=>s+=ln(`M${x} 425 V446`));
+  $('#archSvg').innerHTML=s+`</svg><div class="legend"><span><i class="sw" style="background:${C.violet}"></i>نماذج تنبؤ (تقترح فقط)</span><span><i class="sw" style="background:${C.amber}"></i>المطابقة (المرجع الحاسم)</span><span><i class="sw" style="background:${C.teal}"></i>وحدات النطاق</span></div>`;
+  $('#dm').innerHTML=[
+   ['المستخدمون والمواقع','users\nstudent_profiles\ncampuses\npickup_points'],
+   ['الجدولة','commute_profiles\nrecurring_schedule_rules\nschedule_exceptions\nride_requests'],
+   ['المجموعات والعروض','ride_circles\ncircle_members\ngroup_candidates\ngroup_offers\noffer_passengers\nseat_holds'],
+   ['الحجوزات والإرسال','confirmed_bookings\nbooking_passengers\ntrip_stops\ndispatch_attempts'],
+   ['الأجرة والدفع','fare_quotes\npayment_obligations\npayment_events'],
+   ['المطابقة والإشعارات','matching_runs\nmatching_decisions\nnotification_events']
+  ].map(g=>`<div class="card"><h4>${g[0]}</h4><div style="direction:ltr;text-align:left;font-family:ui-monospace,Menlo,monospace;font-size:13px;color:var(--amber);white-space:pre">${g[1]}</div></div>`).join('');
+})();
+
+/* ---------- Metrics ---------- */
+$('#metrics').innerHTML=[
+ ['نسبة المطابقة','نسبة الطلاب المتلقين عروضاً مشتركة ممكنة'],
+ ['نسبة التنفيذ','نسبة من تلقوا رحلة مكتملة فعلاً'],
+ ['متوسط توفير الطالب','هل يقلل المنتج النفقات'],
+ ['نسبة الوصول في الوقت','هل بقيت الموثوقية'],
+ ['متوسط المشي + الانتظار','مقدار الإزعاج الذي تضيفه المشاركة'],
+ ['كم مركبة لكل طالب مخدوم','كفاءة استخدام المركبات'],
+ ['أرباح السائق في الساعة','هل يستفيد السائقون من التحسين'],
+ ['الإلغاء ونسبة البدائل','الاستقرار التشغيلي'],
+ ['جهد الطالب','عدد الإجراءات اليدوية لكل رحلة متكررة'],
+ ['زمن تنفيذ المطابقة','هل الخوارزمية سريعة الاستجابة']
+].map((m,i)=>`<div class="card"><h4>${i+1}. ${m[0]}</h4><p>${m[1]}</p></div>`).join('');
+
+/* ---------- Features ---------- */
+const FEAT=[
+ ['إعداد جدول الجامعة','P0','مجدول أسبوعي يعمل'],['نماذج تعلّم آلي ثلاثة (طلب، إلغاء، زمن P90)','P0','مدرَّبة ومقيَّمة ومربوطة بالمطابقة، مع بديل عند التعطل'],['مدخل جدول منظم مع تحقق فوري','P0','أيام وأوقات وميزانية بحقول محددة وبلا أخطاء تفسير'],['توليد الرحلات المتكررة','P0','طلبات مستقبلية تلقائية'],
+ ['مطابقة بالقيود','P0','خوارزمية حقيقية تنتج مجموعات ممكنة'],['مقارنة المجموعات','P0','السعر ووقت الوصول والانحراف والمقاعد'],['قبول المجموعة','P0','تغيّر حالة العرض وحجز المقعد'],
+ ['حساب الأجرة والتوفير','P0','حسابات متسقة بافتراضات شفافة'],['الإلغاء وإعادة المطابقة','P0','سيناريو استرداد حي'],
+ ['رحلة مشتركة فورية','P1','نافذة مطابقة 15 د محاكاة'],['دوائر ركوب دائمة','P1','حفظ وإعادة استخدام الرفاق'],['تحسين نقطة الالتقاء','P1','اختيار بين نقاط آمنة محددة'],
+ ['توقع الطلب','P1','نموذج مدرَّب مع تقييم ونطاق عدم يقين'],['جدولة العودة','P1','نفس المنطق بالاتجاه المعاكس'],['نقاط التقاء مقترحة (محطات باص ومواقف)','P1','تقترح أماكن قريبة تزيد فرص مجموعة أفضل وأرخص ضمن حد المشي'],['ركاب مرافقون من نفس الحساب','P1','إضافة أخ/صديق محلي مباشرة من حسابك مع احتساب مقاعدهم'],
+ ['تكامل دفع كامل','Later','حالات وأخطاء دفع محاكاة'],['تكامل إرسال جيني فعلي','Later','محوّل مُحاكى بصراحة'],['إعادة تموضع السائقين','Later','مقترح تصميم'],['تعلم آلي متقدم/RL','Later','خارطة طريق بحثية']
+];
+(function(){
+  const cnt={P0:0,P1:0,Later:0};FEAT.forEach(f=>cnt[f[1]]++);
+  $('#prioDonut').innerHTML=donut([[cnt.P0,C.red,'P0 أساسي'],[cnt.P1,C.amber,'P1 مهم'],[cnt.Later,C.blue,'لاحقاً']],FEAT.length,'ميزة');
+  const cls={P0:'P0',P1:'P1',Later:'P2'};
+  $('#featList').innerHTML=FEAT.map(f=>`<div style="padding:6px 0;border-bottom:1px solid var(--line)"><span class="pill ${cls[f[1]]}">${f[1]}</span> <b>${f[0]}</b><div class="note" style="margin:0">${f[2]}</div></div>`).join('');
+})();
+$('#screens').innerHTML=[
+ ['1','حرمي (My Campus)','الرحلة التالية، وقت الالتقاء المتوقع، موعد الوصول، التوفير المقدّر، حالة التأكيد. الشاشة الرئيسية — وليست خريطة تاكسي عامة.'],
+ ['2','مساعد الجدول (Autopilot)','الأيام المتكررة، تفضيلات الوصول/المغادرة، الميزانية، حد المشي، الاستثناءات + إدخال اللغة الطبيعية.'],
+ ['3','المطابقات الذكية','مقارنة المجموعات وسقوف الأسعار، التمييز بين العروض التقديرية والحجوزات المؤكدة، وشرح سبب التوصية.'],
+ ['4','دوائر ركوبي','الأصدقاء المتكررون، الدعوات، العضويات، أذونات الخصوصية. تعطيل مؤقت دون حذف.'],
+ ['5','الرحلة الحية','حالة الحجز/الإرسال، نقطة الالتقاء الآمنة، الوصول المقدّر، المسار، معلومات الركاب المسموحة، الإلغاء والدعم.']
+].map(s=>`<div class="card"><div class="big">${s[0]}</div><h4>${s[1]}</h4><p style="font-size:14px">${s[2]}</p></div>`).join('');
+
+/* ---------- Demo timeline ---------- */
+(function(){
+  const D=[
+   ['مشكلة الطالب',30,C.red,'طالب يداوم ثلاثة أيام أسبوعياً ويحتاج كل مرة إلى مواصلات رخيصة. الجدول متوقع لكن الحجز اليومي مكرر.'],
+   ['إعداد الجدول المنظم',45,C.violet,'الطالب يختار أيامه وأوقاته وميزانيته في نموذج منظم، يتحقق النظام فوراً ويولّد الرحلات المتكررة، ويؤكد الطالب.'],
+   ['المطابقة التلقائية',60,C.blue,'تُضاف طلبات طلاب محاكاة، فيكوّن المحرك مجموعتين ممكنتين بأسعار ودرجات موثوقية مستخرجة من نموذج P90. اشرح تركيبة مرفوضة لأنها تخرق موعد الوصول.'],
+   ['القبول والحجز',45,C.teal,'يقبل الطالب مجموعة: يتناقص عدد المقاعد، تتغير نسخة العرض، يظهر سقف الأجرة وتقدّم إرسال محاكى.'],
+   ['سيناريو الفشل',60,C.amber,'راكب يلغي. يعيد المحرك حساب البدائل، يحافظ على شروط الركاب الملتزمين، ويقدّم نتيجة استرداد مناسبة. هنا تُظهر نضجاً تشغيلياً.'],
+   ['إثبات القيمة',45,C.green,'مقارنة: رحلات مستقلة / تجميع بسيط / تجميع محسَّن. التوفير المحسوب والوصول الناجح واستخدام المركبات وأي فشل أو بدائل.']
+  ];
+  const tot=D.reduce((a,d)=>a+d[1],0);
+  $('#tl').innerHTML=D.map(d=>`<div style="flex:${d[1]};background:${d[2]}">${d[1]}ث</div>`).join('');
+  $('#tlLegend').innerHTML=D.map((d,i)=>`<span><i class="sw" style="background:${d[2]}"></i>${i+1}. ${d[0]}</span>`).join('')+`<span>الإجمالي ≈ ${Math.floor(tot/60)}:${String(tot%60).padStart(2,'0')} دقيقة</span>`;
+  $('#demoSteps').innerHTML=D.map((d,i)=>`<details ${i===0?'open':''}><summary><i class="sw" style="background:${d[2]}"></i>${i+1}. ${d[0]} — ${d[1]} ثانية</summary><p>${d[3]}</p></details>`).join('');
+})();
+
+/* ---------- QA / team / decisions / remember ---------- */
+$('#qaList').innerHTML=QA.map(q=>`<details><summary>${q[0]}</summary><p>${q[1]}</p></details>`).join('');
+$('#mile').innerHTML=`<div class="grid g2">`+[
+ ['1','الرحلة الأساسية تعمل','أعلى أولوية',C.red],['2','جودة المطابقة والخوارزميات','التالي',C.amber],
+ ['3','اختبار الفشل والمقاييس','أساسي',C.blue],['4','العرض وتدريب التقديم','النهائي',C.green]
+].map(m=>`<div class="card" style="border-right:5px solid ${m[3]}"><h4>المرحلة ${m[0]} · ${m[1]}</h4><p>${m[2]}</p></div>`).join('')+`</div>`;
+$('#decTable').innerHTML+=DECISIONS.map(d=>`<tr><td><b style="color:var(--teal)">${d[0]}</b></td><td>${d[1]}</td><td>${d[2]}</td></tr>`).join('');
+$('#remember').innerHTML=[
+ ['صفر تخطيط متكرر','يضبط الطالب تنقّله مرة واحدة، والنظام يتولى الاكتشاف والاقتراح المتكرر.'],
+ ['ذكاء حقيقي لا زينة','نماذج تتنبأ وخوارزميات تقرر: ثلاثة نماذج مقيَّمة، ومحرك قيود له حق النقض.'],
+ ['موثوقية بالتصميم','قيود وصول صارمة، حماية للأجرة، ضوابط أذونات، وبدائل عند الفشل.'],
+ ['قيمة تنقّل قابلة للقياس','خفض تكلفة أو استخدام مركبات دون التضحية بالتنفيذ أو الالتزام بالمواعيد.'],
+ ['تكامل معقول مع جيني','ميزة مبنية حول سائقين مرخّصين وإرسال وسياسات أجرة وقيود واقعية.']
+].map((r,i)=>`<div class="card"><div class="big">${i+1}</div><h4>${r[0]}</h4><p>${r[1]}</p></div>`).join('');
+
+/* ---------- Response to notes ---------- */
+(function(){
+  const host=$('#respList');if(!host)return;
+  const T={'نُفِّذ':'ok','مرفوض':'warn','قرار':'ok'};
+  host.innerHTML=RESP.map(r=>`<div class="card" style="margin-bottom:12px;border-right:5px solid ${r[2]==='مرفوض'?C.red:C.green}">
+    <div class="note" style="margin:0">ملاحظة ${r[0]}</div>
+    <p style="color:var(--text)"><b>${r[1]}</b></p>
+    <p><span class="pill ${r[2]==='مرفوض'?'P0':'P2'}">${r[2]}</span> <b style="color:var(--teal)">${r[3]}</b></p>
+    <p>${r[4]}</p></div>`).join('');
+})();
+
+</script>
+<script>
+/* مختبر الذكاء الاصطناعي: ثلاثة نماذج تُدرَّب فعلياً في المتصفح على بيانات اصطناعية */
+(function(){
+const $=s=>document.querySelector(s);
+const C={teal:'#2dd4bf',blue:'#60a5fa',amber:'#fbbf24',red:'#f87171',green:'#4ade80',mute:'#9fb0d0',line:'#25335a'};
+const rng=s=>()=>{s|=0;s=s+0x6D2B79F5|0;let t=Math.imul(s^s>>>15,1|s);t=t+Math.imul(t^t>>>7,61|t)^t;return((t^t>>>14)>>>0)/4294967296};
+const gauss=r=>{let u=0;while(!u)u=r();return Math.sqrt(-2*Math.log(u))*Math.cos(2*Math.PI*r())};
+function solve(A,b){const n=b.length,M=A.map((r,i)=>[...r,b[i]]);
+ for(let i=0;i<n;i++){let p=i;for(let r=i+1;r<n;r++)if(Math.abs(M[r][i])>Math.abs(M[p][i]))p=r;[M[i],M[p]]=[M[p],M[i]];
+  for(let r=i+1;r<n;r++){const f=M[r][i]/M[i][i];for(let c=i;c<=n;c++)M[r][c]-=f*M[i][c]}}
+ const x=Array(n).fill(0);for(let i=n-1;i>=0;i--){let s=M[i][n];for(let c=i+1;c<n;c++)s-=M[i][c]*x[c];x[i]=s/M[i][i]}return x}
+function ridge(X,y,lam=1e-2){const k=X[0].length,A=Array.from({length:k},()=>Array(k).fill(0)),b=Array(k).fill(0);
+ X.forEach((x,i)=>{for(let a=0;a<k;a++){b[a]+=x[a]*y[i];for(let c=0;c<k;c++)A[a][c]+=x[a]*x[c]}});
+ for(let a=1;a<k;a++)A[a][a]+=lam;return solve(A,b)}
+const dot=(w,x)=>w.reduce((s,v,i)=>s+v*x[i],0);
+const sig=z=>1/(1+Math.exp(-z));
+const erf=x=>{const s=Math.sign(x);x=Math.abs(x);const t=1/(1+0.3275911*x);return s*(1-(((((1.061405429*t-1.453152027)*t)+1.421413741)*t-0.284496736)*t+0.254829592)*t*Math.exp(-x*x))};
+const Phi=z=>0.5*(1+erf(z/Math.SQRT2));
+const mean=a=>a.reduce((s,v)=>s+v,0)/a.length;
+
+/* ===== النموذج 1: توقع الطلب ===== */
+const DAYS=['الأحد','الاثنين','الثلاثاء','الأربعاء','الخميس'];
+(function(){
+  const r=rng(11),BASE=[20,14,19,12,10],EXAM=new Set([5,6,11,12]);
+  const rows=[];
+  for(let w=0;w<14;w++)for(let d=0;d<5;d++)rows.push({w,d,ex:EXAM.has(w)?1:0,y:BASE[d]+0.35*w+(EXAM.has(w)?5:0)+gauss(r)*1.8});
+  const feat=(w,d,ex)=>[1,d===1,d===2,d===3,d===4,ex,w/10].map(Number);
+  const fit=rs=>ridge(rs.map(o=>feat(o.w,o.d,o.ex)),rs.map(o=>o.y));
+  const tr=rows.filter(o=>o.w<12),te=rows.filter(o=>o.w>=12);
+  const w1=fit(tr);
+  const mae=a=>mean(a.map(Math.abs));
+  const mErr=mae(te.map(o=>dot(w1,feat(o.w,o.d,o.ex))-o.y));
+  const nErr=mae(te.map(o=>rows.find(p=>p.w===o.w-1&&p.d===o.d).y-o.y));
+  const W=fit(rows),sd=Math.sqrt(mean(rows.map(o=>(dot(W,feat(o.w,o.d,o.ex))-o.y)**2)))*1.1;
+  $('#lab1Eval').innerHTML=`تقييم على أسبوعين لم يرَهما النموذج: متوسط الخطأ المطلق <b class="ok">${mErr.toFixed(2)}</b> طلب للنموذج مقابل <b class="warn">${nErr.toFixed(2)}</b> للطريقة الساذجة «مثل الأسبوع الماضي» — أي أفضل بنسبة <b>${((1-mErr/nErr)*100).toFixed(0)}%</b>.`;
+  const chk=$('#l1ex');
+  function draw(){
+    const ex=chk.checked?1:0,last=rows.filter(o=>o.w===13);
+    let s=`<svg viewBox="0 0 620 270"><line x1="40" y1="220" x2="600" y2="220" stroke="${C.line}"/>`;
+    const ymax=34,Y=v=>220-v/ymax*190;
+    [0,10,20,30].forEach(v=>s+=`<line x1="40" y1="${Y(v)}" x2="600" y2="${Y(v)}" stroke="${C.line}" stroke-dasharray="3 4"/><text x="34" y="${Y(v)+4}" font-size="11" fill="${C.mute}" text-anchor="end">${v}</text>`);
+    DAYS.forEach((d,i)=>{
+      const x=540-i*110,p=dot(W,feat(14,i,ex)),lo=p-1.28*sd,hi=p+1.28*sd;
+      s+=`<text x="${x}" y="245" font-size="13" fill="#e8edf7" text-anchor="middle">${d}</text>`;
+      s+=`<rect x="${x-34}" y="${Y(hi)}" width="68" height="${Y(lo)-Y(hi)}" rx="6" fill="${C.teal}" opacity=".25"/>`;
+      s+=`<rect x="${x-24}" y="${Y(p)}" width="48" height="${220-Y(p)}" rx="5" fill="${C.teal}"/>`;
+      s+=`<text x="${x}" y="${Y(hi)-6}" font-size="12.5" fill="#e8edf7" text-anchor="middle" font-weight="700">${p.toFixed(0)} (${lo.toFixed(0)}–${hi.toFixed(0)})</text>`;
+      s+=`<circle cx="${x}" cy="${Y(last[i].y)}" r="5" fill="${C.amber}"/>`;
+    });
+    $('#l1Svg').innerHTML=s+`</svg><div class="legend"><span><i class="sw" style="background:${C.teal}"></i>توقع الأسبوع القادم (ونطاق 80%)</span><span><i class="sw" style="background:${C.amber}"></i>الأسبوع الماضي الفعلي</span></div>`;
+  }
+  chk.onchange=draw;draw();
+})();
+
+/* ===== النموذج 2: مخاطر الإلغاء ===== */
+(function(){
+  const r=rng(23),D=[];
+  for(let i=0;i<900;i++){const thu=r()<.2?1:0,rate=r()*.5,lead=1+r()*71,ex=r()<.15?1:0;
+    const p=sig(-3.0+0.9*thu+5*rate+0.02*lead-0.7*ex);D.push({x:[1,thu,rate*4,lead/24,ex],y:r()<p?1:0})}
+  const tr=D.slice(0,700),te=D.slice(700);
+  let w=[0,0,0,0,0];
+  for(let it=0;it<2000;it++){const g=[0,0,0,0,0];tr.forEach(o=>{const e=sig(dot(w,o.x))-o.y;o.x.forEach((v,k)=>g[k]+=e*v)});w=w.map((v,k)=>v-0.5*g[k]/tr.length)}
+  const pr=te.map(o=>sig(dot(w,o.x))),base=mean(tr.map(o=>o.y));
+  const ll=(p,y)=>-(y*Math.log(Math.max(p,1e-9))+(1-y)*Math.log(Math.max(1-p,1e-9)));
+  const mll=mean(te.map((o,i)=>ll(pr[i],o.y))),bll=mean(te.map(o=>ll(base,o.y)));
+  let wins=0,tot=0;te.forEach((a,i)=>{if(a.y!==1)return;te.forEach((b,j)=>{if(b.y!==0)return;tot++;wins+=pr[i]>pr[j]?1:pr[i]===pr[j]?.5:0})});
+  $('#lab2Eval').innerHTML=`تقييم على 200 رحلة لم يرَها النموذج: AUC = <b class="ok">${(wins/tot).toFixed(2)}</b> (0.5 = تخمين عشوائي)، وخسارة اللوغاريتم <b class="ok">${mll.toFixed(3)}</b> مقابل <b class="warn">${bll.toFixed(3)}</b> لتوقع معدل ثابت للجميع.`;
+  const ids=['l2t','l2r','l2l','l2e'];
+  function up(){
+    const thu=$('#l2t').checked?1:0,rate=+$('#l2r').value,lead=+$('#l2l').value,ex=$('#l2e').checked?1:0;
+    $('#l2ro').textContent=rate+'%';$('#l2lo').textContent=lead+' ساعة';
+    const p=sig(dot(w,[1,thu,rate/100*4,lead/24,ex]))*100;
+    let lvl,cls,act;
+    if(p<15){lvl='منخفض';cls='ok';act='لا إجراء إضافي: يُحجز المقعد كالمعتاد.'}
+    else if(p<35){lvl='متوسط';cls='';act='يُرسل تذكير وإعادة تأكيد قبل الرحلة، ويُحتفظ بطالب مطابق في قائمة الانتظار.'}
+    else{lvl='مرتفع';cls='warn';act='يُطلب تأكيد صريح، وتُجهَّز قائمة انتظار مسبقاً لملء المقعد إن ألغى. لا يُعاقَب الطالب ولا يُمنع.'}
+    $('#l2Res').innerHTML=`احتمال الإلغاء: <span class="big ${cls}">${p.toFixed(0)}%</span> — خطر <b class="${cls}">${lvl}</b><br>${act}`;
+  }
+  ids.forEach(i=>$('#'+i).oninput=up);up();
+})();
+
+/* ===== النموذج 3: زمن الرحلة و P90 ===== */
+(function(){
+  const r=rng(37),D=[];
+  for(let i=0;i<1200;i++){const dist=3+r()*17,pk=r()<.4?1:0,rn=r()<.2?1:0;
+    const mu=Math.log((3*dist+5)*(1+.35*pk+.2*rn)),s=.08+.10*pk+.05*rn;
+    D.push({x:[1,Math.log(dist),pk,rn],t:Math.exp(mu+s*gauss(r))})}
+  const tr=D.slice(0,1000),te=D.slice(1000);
+  const wm=ridge(tr.map(o=>o.x),tr.map(o=>Math.log(o.t)));
+  const res=tr.map(o=>Math.log(o.t)-dot(wm,o.x));
+  const ws=ridge(tr.map(o=>[1,o.x[2],o.x[3]]),res.map(v=>Math.abs(v)*1.2533));
+  const sg=x=>Math.max(.03,dot(ws,[1,x[2],x[3]]));
+  const pred=x=>({mu:dot(wm,x),s:sg(x)});
+  const cov=mean(te.map(o=>{const q=pred(o.x);return Math.log(o.t)<=q.mu+1.2816*q.s?1:0}))*100;
+  const cst=mean(tr.map(o=>o.t)),rm=a=>Math.sqrt(mean(a.map(v=>v*v)));
+  const e1=rm(te.map(o=>Math.exp(pred(o.x).mu)-o.t)),e0=rm(te.map(o=>cst-o.t));
+  $('#lab3Eval').innerHTML=`تقييم على 200 رحلة لم يرَها النموذج: خطأ زمن الرحلة <b class="ok">${e1.toFixed(1)}</b> دقيقة مقابل <b class="warn">${e0.toFixed(1)}</b> لو استخدمنا المتوسط الثابت. ونسبة الرحلات التي وصلت ضمن P90 المتوقع: <b class="ok">${cov.toFixed(0)}%</b> (الهدف 90%) — أي أن النموذج «معايَر».`;
+  function up(){
+    const dist=+$('#l3d').value,pk=$('#l3p').checked?1:0,rn=$('#l3r').checked?1:0,av=+$('#l3a').value;
+    $('#l3do').textContent=dist+' كم';$('#l3ao').textContent=av+' د';
+    const q=pred([1,Math.log(dist),pk,rn]),p50=Math.exp(q.mu),p90=Math.exp(q.mu+1.2816*q.s),buf=p90-p50;
+    const prob=Phi((Math.log(av)-q.mu)/q.s)*100;
+    const fixedP=Phi((Math.log(p50+8)-q.mu)/q.s)*100;
+    $('#l3Res').innerHTML=`زمن الرحلة المتوقع (P50): <b>${p50.toFixed(0)} د</b> · الأسوأ المعقول (P90): <b>${p90.toFixed(0)} د</b><br>
+     هامش الأمان الذي يقترحه النموذج: <span class="big">${buf.toFixed(0)} د</span> (بدل رقم ثابت)<br>
+     إذا كان الوقت المتاح ${av} د: احتمال الوصول في الوقت = <span class="big ${prob>=90?'ok':prob>=75?'':'warn'}">${prob.toFixed(0)}%</span><br>
+     <span class="note">لو استخدمنا هامشاً ثابتاً 8 دقائق في هذه الظروف لكان احتمال الوصول ${fixedP.toFixed(0)}% فقط.</span>
+     <br><b>الاستخدام:</b> هذه النسبة هي «درجة الموثوقية» في كل عرض (مثل 82% و97%)، فلا تعود أرقاماً مخترعة. ويرفض المحرك أي عرض أقل من الحد الأدنى الإلزامي.`;
+  }
+  ['l3d','l3p','l3r','l3a'].forEach(i=>$('#'+i).oninput=up);up();
+})();
+})();
+
+</script>
+<script>
+/* مدير الملاحظات — يحفظ في localStorage */
+(function(){
+const KEY='jeeny-notes-v1';
+let notes=JSON.parse(localStorage.getItem(KEY)||'[]');
+const save=()=>{localStorage.setItem(KEY,JSON.stringify(notes));render()};
+const $=s=>document.querySelector(s);
+const main=document.querySelector('main');
+const secOf=n=>{while(n&&n!==main){if(n.nodeType===1&&n.matches&&n.matches('[data-nav]'))return n;n=n.parentNode}return null};
+const inUI=n=>{n=n.nodeType===1?n:n.parentNode;return n&&n.closest&&n.closest('#ntPanel,#ntPop,#ntAdd,#ntFab,nav')};
+
+document.body.insertAdjacentHTML('beforeend',`
+<button id="ntAdd">📝 أضف ملاحظة</button>
+<div id="ntPop"><q id="ntQ"></q><textarea id="ntT" placeholder="ماذا تريد أن تعدّل أو تتذكر هنا؟"></textarea>
+<div style="display:flex;gap:8px;margin-top:8px"><button class="nb" id="ntSave">حفظ</button><button class="nb g" id="ntCancel">إلغاء</button></div></div>
+<button id="ntFab">📒 الملاحظات<span id="ntCnt">0</span></button>
+<aside id="ntPanel"><header><b>📒 ملاحظاتي</b><button class="nb g" id="ntGen">+ عامة</button><button class="nb" id="ntCopy">نسخ</button><button class="nb g" id="ntDl">تنزيل</button><button class="nb g" id="ntX">✕</button></header>
+<div id="ntList"></div></aside>`);
+const add=$('#ntAdd'),pop=$('#ntPop');
+let pending=null;
+
+/* selection → floating button */
+document.addEventListener('mouseup',e=>{
+  setTimeout(()=>{
+    const s=getSelection();
+    if(!s||s.isCollapsed||!s.toString().trim()||inUI(s.anchorNode)||!main.contains(s.anchorNode)){add.style.display='none';return}
+    const r=s.getRangeAt(0),rect=r.getBoundingClientRect();
+    pending={quote:s.toString().trim().slice(0,300),sec:(secOf(r.startContainer)||{}).id||'top',range:r.cloneRange()};
+    add.style.display='block';
+    add.style.top=(scrollY+rect.top-40)+'px';
+    add.style.left=Math.max(8,scrollX+rect.left+rect.width/2-60)+'px';
+  },10);
+});
+add.onmousedown=e=>e.preventDefault();
+add.onclick=()=>openPop(pending);
+function openPop(p){
+  add.style.display='none';
+  $('#ntQ').textContent=p&&p.quote?'«'+p.quote+'»':'ملاحظة عامة';
+  $('#ntT').value='';pop.style.display='block';
+  pop.style.left='50%';pop.style.top='30%';pop.style.transform='translateX(-50%)';
+  pending=p||{quote:'',sec:'top'};$('#ntT').focus();
+}
+$('#ntCancel').onclick=()=>{pop.style.display='none';pending=null};
+$('#ntSave').onclick=()=>{
+  const t=$('#ntT').value.trim();if(!t)return;
+  const n={id:Date.now(),sec:pending.sec,quote:pending.quote,text:t,done:false,ts:new Date().toLocaleString('ar'),occ:0};
+  if(pending.range&&pending.quote){
+    const sec=document.getElementById(pending.sec),w=document.createTreeWalker(sec,4);let c=0,x;
+    while((x=w.nextNode())){if(x===pending.range.startContainer)break;if(x.data.includes(pending.quote))c++}
+    n.occ=c;
+  }
+  notes.push(n);pop.style.display='none';getSelection().removeAllRanges();pending=null;save();
+};
+$('#ntGen').onclick=()=>openPop(null);
+
+/* highlight (works when the quote sits inside one text node) */
+function secTitle(id){const s=document.getElementById(id);return s?(s.dataset.nav||id):''}
+function highlight(){
+  document.querySelectorAll('mark.nt').forEach(m=>{const p=m.parentNode;p.replaceChild(document.createTextNode(m.textContent),m);p.normalize()});
+  notes.forEach(n=>{
+    if(!n.quote)return;const sec=document.getElementById(n.sec);if(!sec)return;
+    const w=document.createTreeWalker(sec,4,{acceptNode:x=>x.parentNode.closest('mark.nt,script,style')?2:1});
+    let c=0,x;
+    while((x=w.nextNode())){
+      const i=x.data.indexOf(n.quote);
+      if(i<0)continue;
+      if(c++<n.occ&&n.occ>0&&false)continue;
+      try{const r=document.createRange();r.setStart(x,i);r.setEnd(x,i+n.quote.length);
+        const m=document.createElement('mark');m.className='nt'+(n.done?' done':'');m.dataset.id=n.id;m.title=n.text;r.surroundContents(m);}catch(e){}
+      break;
+    }
+  });
+}
+document.addEventListener('click',e=>{const m=e.target.closest&&e.target.closest('mark.nt');if(m){panel(true);const it=document.getElementById('ni'+m.dataset.id);it&&it.scrollIntoView({block:'center'})}});
+
+function render(){
+  $('#ntCnt').textContent=notes.filter(n=>!n.done).length;
+  const L=$('#ntList');
+  L.innerHTML=notes.length?'':'<p class="note">حدّد أي نص في الصفحة ثم اضغط «أضف ملاحظة». ستظهر هنا قائمة بكل ما تريد تعديله.</p>';
+  notes.forEach(n=>{
+    const d=document.createElement('div');d.className='ni'+(n.done?' done':'');d.id='ni'+n.id;
+    const q=document.createElement('div');q.className='q';q.textContent=n.quote?'«'+n.quote+'»':'ملاحظة عامة';
+    const s=document.createElement('div');s.className='s';s.textContent=secTitle(n.sec)+' · '+n.ts;
+    const p=document.createElement('p');p.textContent=n.text;
+    const a=document.createElement('div');a.className='a';
+    const mk=(t,c,f)=>{const b=document.createElement('button');b.className='nb '+c;b.textContent=t;b.onclick=f;a.appendChild(b)};
+    mk(n.done?'↩ إعادة فتح':'✔ تم','g',()=>{n.done=!n.done;save()});
+    mk('✎ تعديل','g',()=>{const v=prompt('عدّل الملاحظة',n.text);if(v!==null&&v.trim()){n.text=v.trim();save()}});
+    mk('🗑 حذف','r',()=>{if(confirm('حذف هذه الملاحظة؟')){notes=notes.filter(z=>z!==n);save()}});
+    q.onclick=()=>{const m=document.querySelector('mark.nt[data-id="'+n.id+'"]');const t=m||document.getElementById(n.sec);if(t){t.scrollIntoView({behavior:'smooth',block:'center'});if(m){m.classList.add('flash');setTimeout(()=>m.classList.remove('flash'),1500)}}};
+    d.append(q,s,p,a);L.appendChild(d);
+  });
+  highlight();
+}
+function md(){return '# ملاحظات التعديل — Jeeny Campus\n\n'+notes.map((n,i)=>`${i+1}. [${n.done?'x':' '}] **${secTitle(n.sec)}**${n.quote?`\n   > ${n.quote}`:''}\n   ${n.text.replace(/\n/g,'\n   ')}`).join('\n\n')}
+$('#ntCopy').onclick=async()=>{await navigator.clipboard.writeText(md());$('#ntCopy').textContent='تم ✔';setTimeout(()=>$('#ntCopy').textContent='نسخ',1200)};
+$('#ntDl').onclick=()=>{const a=document.createElement('a');a.href=URL.createObjectURL(new Blob([md()],{type:'text/markdown'}));a.download='notes.md';a.click()};
+function panel(o){$('#ntPanel').classList.toggle('open',o)}
+$('#ntFab').onclick=()=>panel(!$('#ntPanel').classList.contains('open'));
+$('#ntX').onclick=()=>panel(false);
+render();
+})();
+
+</script>
+</body>
+</html>
